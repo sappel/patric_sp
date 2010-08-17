@@ -1,0 +1,85 @@
+   
+   TITLE,'FODO with SIS cell length';
+ 
+   !---------------------  DRIFT SPACES DEFINITION  ---------------------
+
+   dr: drift, L=1.191;
+   Ndr := 3.0; 
+   dr_s: drift, L=dr->L/Ndr;
+   dr: line=(3*(dr_s));
+
+   !---------------------------------------------------------------------
+
+   !--------------------------  BENDING MAGNET ---------------------------
+
+   ALPHA  := 0.0 * RADDEG;
+   LL     := 150 * RADDEG;
+
+   rb: SBEND,L=LL,ANGLE= ALPHA;
+
+   Nrb := 3.0;
+   rb_s: Sbend,L=rb->L/Nrb,angle=rb->angle/Nrb;
+   rb: line=(3*(rb_s));   
+
+   ! ------------------- horizontal quadrupole ----------------------------
+   
+   qf:  quadrupole, L= 4.0,  K1=  0.01;
+   qd:  quadrupole, L= 4.0,  K1= -0.01;
+   Nquad := 5.0;  
+   qf_s: quadrupole, L=qf->L/Nquad,  K1=  0.05;
+   qd_s: quadrupole, L=qd->L/Nquad,  K1=  -0.05;
+   qf: line=(5*(qf_s));
+   qd: line=(5*(qd_s));
+   
+   !---------------------------------------------------------------
+   
+   !-------------------------RF cavity----------------------------------
+
+   rf: rfcavity, volt=0.002, harmon=0.0833;
+
+   !------------------------------------------------------------------
+
+   ! ---------------------------  LINE DEFINITION ---------------------------
+   cella: line=(qf,dr,rb,dr,qd,dr,rb,dr);
+   !------------------------------------------------------------------------
+
+   beam,particle=proton,energy=1.0; ! sequence=cella;
+
+   use, period=cella; 
+
+!---------------MATCHING----------------------------------------
+
+   match,sequence=cella;
+   VARY,NAME=qf_s->K1,STEP=0.0001; 
+   VARY,NAME=qd_s->K1,STEP=0.0001; 
+   CONSTRAINT,sequence=cella,RANGE=#E,MUX=0.34666,MUY=0.2741;
+   LMDIF,CALLS=2000,TOLERANCE=1.0E-8;
+   endmatch;
+
+!---------------------------------------------------------
+ 
+   !select,flag=makethin,clear;
+   !select,flag=makethin,pattern="q*",slice=2; 
+   !makethin,sequence=cella;
+   !use, period=cella;
+  
+   select,flag=sectormap,clear;
+   select,flag=sectormap,range=#s/#e;
+   select,flag=twiss,clear;
+   select,flag=twiss,column=name,s,L,alfx,alfy,betx,bety,dx;
+
+   twiss,file,sectormap;
+
+   setplot,post=2,ascale=1.5, lscale=1.5,rscale=1.5, sscale=1.5, lwidth=3;
+   PLOT, HAXIS=S,VAXIS1=BETX,VAXIS2=BETY,VAXIS3=DX,spline,colour=100;
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,125 @@
+
+   !                                    S I S
+   !" -- SIS -- :  bend. quad. sex.  with correction to fringe "
+
+
+   !-------------------------RF cavity----------------------------------
+
+   rf: rfcavity, volt=0.0002, harmon=0.0833;
+
+   !---------------------  DRIFT SPACES DEFINITION  ---------------------
+  
+   DR1: DRIFT, L=0.6450000;
+  
+   dr2: DRIFT, L=0.9700000;
+   Ndr2 := 2.0;
+   dr2_s: drift, L=dr2->L/Ndr2; 
+   dr2: line=(2*(dr2_s));
+ 
+   dr3: DRIFT, L=6.8390117;
+   Ndr3 := 10.0;
+   dr3_s: drift, L=dr3->L/Ndr3; 
+   dr3: line=(10*(dr3_s)); 
+
+   dr3a: DRIFT, L=dr3->l/2.0;
+   Ndr3a := 5.0;
+   dr3a_s: drift, L=dr3a->L/Ndr3a; 
+   dr3a: line=(5*(dr3a_s)); 
+
+   DR4: DRIFT, L=0.6000000;
+   Ndr4 := 1.0;
+   dr4_s: drift, L=dr4->L/Ndr4; 
+   dr4: line=(1*(dr4_s)); 
+
+   DR5: DRIFT, L=0.7098000;
+   Ndr5 := 2.0;
+   dr5_s: drift, L=dr5->L/Ndr5; 
+   dr5: line=(2*(dr5_s));     
+
+   DR6: DRIFT, L=0.4998000;
+   Ndr6 := 1.0;
+   dr6_s: drift, L=dr6->L/Ndr6; 
+   dr6: line=(1*(dr6_s));     
+
+   drb: DRIFT, L=2.617993877991;
+   Ndrb := 6.0;
+   drb_s: drift, L=drb->L/Ndrb; 
+   drb: line=(6*(drb_s));
+
+   !---------------------------------------------------------------------
+
+   !--------------------------  BENDING MAGNET ---------------------------
+
+   ALPHA  := 15.0 * RADDEG; ! zero bending 
+   LL     := 150 * RADDEG;
+
+   rb: SBEND,L=LL,ANGLE= ALPHA;
+
+   Nrb := 6.0;
+   rb_s: sbend,L=rb->L/Nrb,angle=rb->angle/Nrb;
+   rb: line=(6*(rb_s));   
+   
+   ! ------------------- horizontal quadrupole ----------------------------
+   
+   qs1f:  QUADRUPOLE, L= 1.0400000,  K1=  0.30989596;
+   Nqs1f := 6.0;
+   qs1f_s: quadrupole, L=qs1f->L/Nqs1f, K1=  0.30989596;
+   qs1f: line=(6*(qs1f_s));
+
+   qs2d:  QUADRUPOLE, L= 1.0400000,  K1= -0.49964116;
+   Nqs2d := 6.0;
+   qs2d_s: quadrupole, L=qs2d->L/Nqs2d, K1= -0.49964116;  
+   qs2d: line=(6*(qs2d_s)); 
+   
+   qs3t:  QUADRUPOLE, L= 0.4804000,  K1=  0.62221964;
+   Nqs3t := 3.0;
+   qs3t_s: quadrupole, L=qs3t->L/Nqs3t,  K1=  0.62221964;
+   qs3t: line=(3*(qs3t_s));
+ 
+   !---------------------------------------------------------------
+  
+   ! ---------------------------  LINE DEFINITION ---------------------------
+   cella:  LINE=(dr3a,qs1f,dr4,qs2d,dr5,qs3t,dr6,dr1,drb,dr2,drb,dr3a,rf);
+   !------------------------------------------------------------------------
+   
+   beam,particle=proton,energy=1.0; ! ,sequence=cella;
+
+   USE,  period=cella; 
+
+!---------------MATCHING----------------------------------------
+   match,sequence=cella;
+   VARY,NAME=qs1f_s->K1,STEP=0.0001; 
+   VARY,NAME=qs2d_s->K1,STEP=0.0001; 
+   !VARY,NAME=qs3t->K1,STEP=0.0001; 
+   CONSTRAINT,sequence=cella,RANGE=#E,MUX=0.34666,MUY=0.2741;
+   LMDIF,CALLS=2000,TOLERANCE=1.0E-8;
+   endmatch; 
+!---------------------------------------------------------
+
+  SELECT, flag=ERROR, CLEAR = true;
+  select,flag=error,pattern="rb_s*";
+  ealign dx:=0.002,dy:=-0.002;
+  SELECT, flag=ERROR, CLEAR = true;
+  select,flag=error,pattern="q*_s";
+  ealign dx:=0.001,dy:=-0.001;
+
+   select,flag=sectormap,clear;
+   select,flag=sectormap,range=#s/#e;
+   select,flag=twiss,clear;
+   select,flag=twiss,column=name,s,L,alfx,alfy,betx,bety,dx;
+
+   twiss,file,sectormap;
+
+   setplot,post=2,ascale=1.5, lscale=1.5,rscale=1.5, sscale=1.5, lwidth=3;
+   PLOT, HAXIS=S,VAXIS1=BETX,VAXIS2=BETY,VAXIS3=DX,spline,colour=100;
+  
+
+
+
+
+
+
+
+
+
+

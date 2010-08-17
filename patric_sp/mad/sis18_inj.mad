@@ -1,0 +1,126 @@
+!                                    S I S 18
+! The kickers to generate the local orbit bump for the beam injection are included in this lattice.
+! The output is firstly used by lo_bump.py to compute the kick strengths required inject the beam
+! with a given offset and angle. Secondly the output is used by patric_sp. For both purposes, the
+! kick strengths have to be 0. Only for testing purposes other values should be set.
+
+TITLE, " -- SIS -- :  bend. quad. sex.  with correction to fringe with kickers for injection";
+
+option, -echo;
+
+beam, particle=U, mass=238, charge=28, gamma=1.012;
+
+!---------------------  DRIFT SPACES DEFINITION  ---------------------
+DR1: DRIFT, L=0.6450000;
+DR2: DRIFT, L=0.9700000;
+DR3: DRIFT, L=6.8390117;
+DR4: DRIFT, L=0.6000000;
+DR5: DRIFT, L=0.7098000;
+DR6: DRIFT, L=0.4998000;
+DRB: DRIFT, L= 2.617993877991;
+
+! partial drift spaces for injection kickers (without length) and 
+! injection point; notes p. 128; SP
+DR3a: DRIFT, L=5.30; ! till bumper in S01 and S03
+DR3b: DRIFT, L=1.54; ! till next quadrupole in S01 and S03
+DR3c: DRIFT, L=5.86; ! till bumper S11
+DR3d: DRIFT, L=0.98; ! till next quadrupole in S11
+DR3e: DRIFT, L=1.00; ! till bumper in S12
+DR3f: DRIFT, L=4.96; ! from bumper to injection point
+DR3g: DRIFT, L=0.88; ! injection point to next quadrupole in S12
+
+!---------------------------------------------------------------------
+
+!--------------------------  BENDING MAGNET ---------------------------
+ALPHA  := 15 * RADDEG;
+LL  := 150 * RADDEG;
+PFR := 7.3 * RADDEG;
+FI  := 0.7;
+!fi=0.0;
+RB: SBEND, L=LL, ANGLE=ALPHA, E1=PFR, E2=PFR, HGAP=0.035, FINT=FI;
+! ------------------- horizontal quadrupole ----------------------------
+QS1F: QUADRUPOLE, L=1.0400000, K1=0.296;
+QS2D: QUADRUPOLE, L=1.0400000, K1=-0.501;
+QS3T: QUADRUPOLE, L=0.4804000, K1=0.656;  // always 0.656 at injection [D. Ondreka]
+
+! looks like dublett focusing
+!QS1F: QUADRUPOLE, L=1.0400000, K1=0.357893011;
+!QS2D: QUADRUPOLE, L=1.0400000, K1=-0.335373024;
+!QS3T: QUADRUPOLE, L=0.4804000, K1=0.0606702417;
+
+!---------------------------------------------------------------
+
+! -------------------- for injection bump -------------------- ; SP
+S01MB3: HKICKER, L=0, KICK=0;  // kicks must be 0 for use in patric_sp, actual values are set there
+S03MB4: HKICKER, L=0, KICK=0;
+S11MB1: HKICKER, L=0, KICK=0;
+S12MB2: HKICKER, L=0, KICK=0;
+!S01MB3: HKICKER, L=0, KICK=2.57e-3;  // to check orbit with x_c=81.6 mm, xp_c=0 mrad
+!S03MB4: HKICKER, L=0, KICK=10.9e-3;
+!S11MB1: HKICKER, L=0, KICK=9.63e-3;
+!S12MB2: HKICKER, L=0, KICK=-3.70e-3;
+!S01MB3: HKICKER, L=0, KICK=5.82e-3;  // to check orbit with x_c=81.6 mm, xp_c=7.42 mrad
+!S03MB4: HKICKER, L=0, KICK=4.32e-3;
+!S11MB1: HKICKER, L=0, KICK=5.28e-3;
+!S12MB2: HKICKER, L=0, KICK=5.40e-3;
+INJ: MARKER;  // for injection point; redundant if always at beginning
+SEPTUM: MARKER;  // marker for collimator
+
+! ---------------------------  LINE DEFINITION --------------------------
+! Sections without injection devices
+CELLA: LINE=(DR1, RB, DR2, RB, DR3, QS1F, DR4, QS2D, DR5, QS3T, DR6);
+
+! SIS-18 starting at injection point
+! S12 from injection point till S01
+SEC12b: LINE=(INJ, DR3g, QS1F, DR4, QS2D, DR5, QS3T, DR6);
+
+! S01
+SEC1: LINE=(DR1, RB, DR2, RB, DR3a, S01MB3, DR3b, QS1F, DR4, QS2D, DR5, QS3T, DR6);
+
+! S03
+SEC3: LINE=(DR1, RB, DR2, RB, DR3a, S03MB4, DR3b, QS1F, DR4, QS2D, DR5, QS3T, DR6);
+
+! S11
+SEC11: LINE=(DR1, RB, DR2, RB, DR3c, S11MB1, DR3d, QS1F, DR4, QS2D, DR5, QS3T, DR6);
+
+! S12a from beginning till injection point
+SEC12a: LINE=(DR1, RB, DR2, RB, DR3e, S12MB2, DR3f, SEPTUM);
+
+SEC12: LINE=(DR1, RB, DR2, RB, DR3e, S12MB2, DR3f, INJ, DR3g, QS1F, DR4, QS2D, DR5, QS3T, DR6);
+
+!------------------------------------------------------------------------
+//sis18: LINE=(12*CELLA);  // SIS18 without bump
+//sis18: LINE=(SEC1, CELLA, SEC3, 7*CELLA, SEC11, SEC12);  // with bump, beginning at S01
+
+// SIS18 ready for injection, beginning at injection point
+sis18: LINE=(SEC12b, SEC1, CELLA, SEC3, 7*CELLA, SEC11, SEC12a);
+
+beam;
+USE, sequence=sis18;
+
+match, sequence=sis18;
+global, sequence=sis18, Q1=4.19, Q2=3.29;
+//constraint, sequence=sis18, range=#e, MUX=4.19;
+//constraint, sequence=sis18, range=#e, MUY=3.29;
+vary, name=QS1F->K1, step=1.e-4;
+vary, name=QS2D->K1, step=1.e-4;
+LMDIF,calls=2000,tolerance=1.e-8;
+endmatch;
+
+select, flag=twiss, clear;
+select, flag=twiss, column=name, keyword, s, mux, muy;
+
+select, flag=sectormap, clear;
+select, flag=sectormap, range=#s/#e;
+select, flag=twiss, clear;
+select, flag=twiss, column=name, keyword, s, L, mux, muy, alfx, alfy, betx, bety, dx, dmux, dmuy;
+
+twiss, chrom, file=twiss_inj.txt;
+twiss, sectormap, sectorfile=sectormap_inj.txt;
+//twiss, table=twiss, file=sis18.twiss;
+//twiss, save;
+
+setplot, post=2, ascale=1.5, lscale=1.5, rscale=1.5, sscale=1.5, lwidth=3;
+PLOT, HAXIS=S, VAXIS1=BETX, VAXIS2=BETY, VAXIS3=X, spline, colour=100;!, range=DR1[1]/DR1[3];
+
+stop;

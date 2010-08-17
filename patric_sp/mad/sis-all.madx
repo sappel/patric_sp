@@ -1,0 +1,487 @@
+!                                     S I S 
+!21-05-03 translated from MIRKO format by Andrea Franchi a.franchi@gsi.de 
+!title " sis-18-inj: from mirko-file of 29-04-2003 with nonlinear elements ";
+!                           INTRODUCTION 
+! 
+! the SIS-18 contains 12 periods. Each period can be divided in 5 sectors: 
+!  
+!   1. the bending section [equal for all the periods] 
+!   2. the first multipoles section [in some periods is the drift DR3, in 
+!                                    others it contains thin multipoles] 
+!   3. the quad doublet [equal for all the periods] 
+!   4. the second multipoles section [it changes at each period] 
+!   5. the third quad section [equal for all the periods] 
+! 
+! The sections 1. 3. 5. are defined at the beginning and are called in  
+! each period. The other sections 2. and 4. are defined in each period, 
+! but some of their drifts are defined only once since they are equal.  
+! 
+! The BUNCHERS (RF CAVITIES) are placed in the second and in the eighth  
+! period. If you are not interested in them, comment the sections which 
+! contain S02BE1A and S08BE1A, and use the others. Note that with  
+! the present values, they are bucher LAG=0.0 (because we are below the  
+! transtion) If you want take into account the RAMPING you must set  
+! LAG=0.116666667 (i.e. 42 deg in units of 2*pi) which is the synchronous  
+! phase. [all data from Peter Hülsmann] 
+! 
+! IN THE TRANSLATION FROM MIRKO FILE THE FOLLOWING ELEMENTS HAVE BEEN  
+! IGNORED: NORM QUADS kicks before each QUAD, BPMs, kickers,  
+! PSE, Bypass. All the slits are considered as drifts. 
+! 
+! IN THIS FILE QUADS AND DRIFTS  ARE SPLITTED IN SUCH A WAY THEIR  
+! LENGHTS ARE ALWAYS LESS THAN 1 m. THIS IS NOT NECESSARY, BUT IT HAS  
+! BEEN DONE TO FIT "EXACTLY" THE BETA FUNCTIONS CALCULATED BY MIRKO 
+! 
+! 
+!======================================================================== 
+
+
+                 !==========================! 
+                 !  1. the bending block    ! 
+                 !==========================! 
+
+ DRB1: DRIFT, TYPE=DRIF, L=0.6450000  ;
+ DRB2: DRIFT, TYPE=DRIF,  L=0.9700000  ;
+ ALPHA   := 15  * RADDEG  ;
+ LL      := 150 * RADDEG  ;
+
+PFR     := 7.3 * RADDEG  ;
+ FI      = 0.7  ;
+ RB: SBEND,TYPE=B1,L:= LL,ANGLE:= ALPHA,E1:= PFR,E2:=PFR,HGAP= 0.035,FINT:= FI  ;
+
+ BENDSECT: LINE=(DRB1,RB,DRB2,RB)  ;
+
+
+                 !==========================! 
+                 !   3. the quad doublet    ! 
+                 !==========================! 
+
+ DR4:  DRIFT, TYPE=DRIF, L=0.6000000     ;
+ QS1F: QUADRUPOLE, TYPE= QD1, L= 1.0400000 / 2,  K1=  0.30989596  ;
+ QS2D: QUADRUPOLE, TYPE= QD2, L= 1.0400000 / 2,  K1= -0.49964116  ;
+
+ DOUBLETSECT: line=(2*(QS1F),DR4,2*(QS2D))  ;
+
+
+
+                 !==========================! 
+                 !   5.  the last quad      ! 
+                 !==========================! 
+
+
+ DR6: DRIFT, TYPE=DRIF, L=0.4998000  ;
+ QS3T: QUADRUPOLE, TYPE= QD3, L= 0.4804000,  K1=  0.62221964  ;
+
+ LASTQUAD: line=(QS3T,DR6)  ;
+
+
+                 !**************************! 
+                 !      FIRST PERIOD        ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ DR1P1M1: DRIFT, TYPE=DRIF, L=4.5640117 / 5  ;
+ DR1P1M2: DRIFT,  TYPE=DRIF, L=1.9400000 / 2  ;
+ DR1P1M3: DRIFT, TYPE=DRIF, L=0.3350000   ;
+
+ S01KM3QS: MULTIPOLE,KnL={0.0000000},Tilt=pi/2.   ;
+ S01KS1C : MULTIPOLE,KnL={0.,-0.0750000}     ;
+
+ MULT1SECT1: LINE=(5*(DR1P1M1),S01KM3QS,2*(DR1P1M2),S01KS1C,DR1P1M3)  ;
+
+!   second multipoles section 
+
+ DR1P2M1: DRIFT, TYPE=DRIF, L=0.3550000  ;
+ DR1P2M2: DRIFT, TYPE=DRIF, L=0.3548000  ;
+ S01KS3C: MULTIPOLE,KnL= {0.,0.0000000}     ;
+
+
+ MULT2SECT1: LINE=(DR1P2M1,S01KS3C,DR1P2M2)  ;
+
+
+
+    ! definition first period  ! 
+                 !     SECOND PERIOD        ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ DR3:      DRIFT, TYPE=DRIF, L=6.8390117 / 7  ;
+ DR2P1M1:  DRIFT, TYPE=DRIF, L=2.5200117 / 3  ;
+ DR2P1M2:  DRIFT, TYPE=DRIF, L=1.3390000 / 2  ;
+ S02BE1A:  RFCAVITY, L= 2.980, VOLT= 0.016,LAG=0.0,    
+                     HARMON=4, BETRF= 1,   PG= 0.04,    
+                     SHUNT= 3200E-6/2.980, TFILL= 10;  ! if LAG=0.0 !  ! then BUNCHER,if LAG=0.11666667  
+                                                      ! then RAMPING 
+! MULT1SECT2: LINE=(7*(DR3))  
+
+!   second multipoles section 
+
+ S02KQ4:   MULTIPOLE,KnL= {0.0000000}      ;
+ S02KM3QS: MULTIPOLE,KnL= {0.0000000},Tilt=pi/2.   ;
+ S02KM5SS: MULTIPOLE,KNL= {0.,0.0000000},Tilt=pi/4.  ;
+
+
+ MULT2SECT2: LINE=(DR1P2M1,S02KQ4,S02KM3QS,S02KM5SS,DR1P2M2)  ;
+
+                 ! definition second period  ! 
+                 !      THIRD PERIOD        ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ DR3P1M1: DRIFT, TYPE=DRIF, L=6.5040117 / 7  ;
+ DR3P1M2: DRIFT, TYPE=DRIF, L=0.3350000  ;
+ S03KS1C: MULTIPOLE,KnL= {0.,-0.0750000}   ;
+
+
+ MULT1SECT3: LINE=(7*(DR3P1M1),S03KS1C,DR3P1M2)  ;
+
+!   second multipoles section 
+
+ S03KS3C: MULTIPOLE,KnL= {0.,0.0000000}   ;
+
+ MULT2SECT3: LINE=(DR1P2M1,S03KS3C,DR1P2M2)  ;
+
+                 ! definition third period  ! 
+                 !      FOURTH PERIOD       ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ S04KQ4:   MULTIPOLE,KnL= {0.0000000}      ;
+ S04KM3QS: MULTIPOLE,KnL= {0.0000000},Tilt=p1/2.    ;
+
+ MULT2SECT4: LINE=(DR1P2M1,S04KQ4,S04KM3QS,DR1P2M2)  ;
+
+                 ! definition fourth period ! 
+                 !       FIFTH PERIOD       ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ S05KS1C: MULTIPOLE,KnL= {0.,-0.0750000}   ;    
+
+ MULT1SECT5: LINE=(7*(DR3P1M1),S05KS1C,DR3P1M2)  ;
+
+!   second multipoles section 
+
+ S05KS3C: MULTIPOLE,KnL= {0.,0.0000000}   ;
+
+ MULT2SECT5: LINE=(DR1P2M1,S05KS3C,DR1P2M2)  ;
+
+                 ! definition fifth period  ! 
+                 !       SIXTH PERIOD       ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ S06KM3QS: MULTIPOLE,Knl= {0.0000000},Tilt=pi/2.   ;
+
+ MULT2SECT6: LINE=(DR1P2M1,S06KM3QS,DR1P2M2)  ;
+
+                 ! definition sixth period  ! 
+                 !      SEVENTH PERIOD      ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ DR7P1M1: DRIFT, TYPE=DRIF, L=5.2640117 / 6  ;
+ DR7P1M2: DRIFT, TYPE=DRIF, L=1.2400117 / 2  ;
+ DR7P1M3: DRIFT, TYPE=DRIF, L=0.3350000   ;
+
+ S07KM3QS: MULTIPOLE,KnL= {0.0000000},Tilt=pi/2.   ;
+ S07KS1C : MULTIPOLE,KnL= {0.,-0.0750000}      ;
+
+ MULT1SECT7: LINE=(6*(DR7P1M1),S07KM3QS,2*(DR7P1M2),S07KS1C,DR7P1M3)  ;
+
+!   second multipoles section 
+
+ S07KS3C: MULTIPOLE,KnL= {0.,0.0000000}   ;
+
+
+ MULT2SECT7: LINE=(DR1P2M1,S07KS3C,DR1P2M2)  ;
+
+                 ! definition seventh period  ! 
+                 !       EIGHTH PERIOD      ! 
+                 !**************************! 
+
+!   first multipoles section 
+! MULT1SECT8: LINE=(7*(DR3)) 
+
+!   second multipoles section 
+
+ S08KQ4:   MULTIPOLE,KnL= {0.0000000}      ;
+ S08KM3QS: MULTIPOLE,KnL= {0.0000000},Tilt=pi/2.   ;
+ S08KM5SS: MULTIPOLE,KnL= {0.,0.0000000},Tilt=pi/4.  ;
+
+
+ MULT2SECT8: LINE=(DR1P2M1,S08KQ4,S08KM3QS,S08KM5SS,DR1P2M2)  ;
+
+                 ! definition eighth period  ! 
+                 !        NINTH PERIOD      ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ S09KS1C: MULTIPOLE,KnL= {0.,-0.0750000}   ;
+
+ MULT1SECT9: LINE=(7*(DR3P1M1),S09KS1C,DR3P1M2)  ;
+
+!   second multipoles section 
+
+ S09KS3C: MULTIPOLE,KnL= {0.,0.0000000}   ;
+
+ MULT2SECT9: LINE=(DR1P2M1,S09KS3C,DR1P2M2)  ;
+
+                 ! definition ninth period  ! 
+                 !        TENTH PERIOD      ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ S10KQ4:   MULTIPOLE,KnL= {0.0000000}      ;
+ S10KM3QS: MULTIPOLE,KnL= {0.0000000},Tilt=pi/2.   ;
+
+ MULT2SECT10: LINE=(DR1P2M1,S10KQ4,S10KM3QS,DR1P2M2)  ;
+
+                 ! definition tenth period  ! 
+                 !      ELEVENTH PERIOD     ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ S11KS1C: MULTIPOLE,KnL= {0.,-0.0750000}    ;
+
+ MULT1SECT11: LINE=(7*(DR3P1M1),S11KS1C,DR3P1M2)  ;
+
+!   second multipoles section 
+
+ S11KS3C: MULTIPOLE,KnL= {0.,0.0000000}   ;
+
+ MULT2SECT11: LINE=(DR1P2M1,S11KS3C,DR1P2M2)  ;
+
+                ! definition eleventh period ! 
+                 !       TWELVTH PERIOD     ! 
+                 !**************************! 
+
+!   first multipoles section 
+
+ S12KM3QS: MULTIPOLE,KnL= {0.0000000},Tilt=pi/2.   ;
+
+ MULT2SECT12: LINE=(DR1P2M1,S12KM3QS,DR1P2M2)  ;
+
+                ! definition twelvth period ! 
+!************************************************************************* 
+
+          !********************************************! 
+          !     SIS-18-INJECTION NONLINEAR LATTICE     ! 
+          !********************************************! 
+!************************************************************************* 
+
+
+
+
+!************************************************************************* 
+!************************************************************************* 
+
+!--------------- CORRECTOR ELEMENTS GRADIENTS (REAL NAMES) --------------- 
+!                MAXIMUM (ABSOLUTE) VALUES OF THE STRENGTH     (C. Muehle) 
+!                          
+!  skew quads         norm quads       skew sext        norm sext * 
+!     [T]                [T]             [T/m]            [T/m] 
+!    0.167              0.136            0.060           1 -> 15.9 
+! 
+! these values must be divided by the magnetic RIGIDITY B*rho [T*m] 
+! 
+!               0.8 T*m < B*rho < 4.6 T*m          (SIS-18 Parameter List) 
+!  
+! in order to calculate the integrated gradients KnL-1 and KNL-2 
+! 
+! * about the norm sext, they are used for chromaticity correction in the 
+! present injection scheme.  For this reason i wrote both the minimum and  
+! the maximum absolute values (SIS-18 Parameter List). 
+
+!             STRENGTH 
+!                \/ 
+
+ S01KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 1 
+ S01KS1C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 1  chromat 
+ S01KS3C,  KNL= {00.,.000 / 1.6}  ;! norm sext period 1  chromat 
+ S02KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 2 
+ S02KM5SS, KNL= {0.,0.000 / 1.6}  ;! skew sext period 2 
+ S03KS1C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 3  chromat 
+ S04KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 4 
+ S07KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 7 
+ S07KS1C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 7  chromat 
+ S08KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 8 
+ S08KM5SS, KNL= {0.,0.000 / 1.6}  ;! skew sext period 8 
+ S10KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 10 
+
+
+
+
+!************************************************************************* 
+!----------------------    CHROMATICITY CORRECTION    -------------------- 
+
+! integrated gradient values of the normal sextupoles after the  
+! chromaticity correction carried out by HARMON. It seems that  
+! the sign (polarity) of MAD is the opposite w.r.t. MIRKO 
+! Qx=4.29 Qy=3.31 
+! 
+! S01KS1C,  KNL= {0., 9.169562E-02}; 
+! S01KS3C,  KNL= {0.,-9.886193E-02}; 
+! S03KS1C,  KNL= {0., 6.144171E-02}; 
+! S03KS3C,  KNL= {0.,-2.021437E-01}; 
+! S05KS1C,  KNL= {0., 1.428253E-01}; 
+! S05KS3C,  KNL= {0.,-9.792214E-02}; 
+! S07KS1C,  KNL= {0., 1.937052E-01}; 
+! S07KS3C,  KNL= {0.,-9.941071E-02}; 
+! S09KS1C,  KNL= {0., 1.080670E-01}; 
+! S09KS3C,  KNL= {0.,-2.660795E-01}; 
+! S11KS1C,  KNL= {0., 5.629073E-03}; 
+! S11KS3C,  KNL= {0.,-3.911129E-02}; 
+
+!************************************************************************* 
+!************************************************************************* 
+
+ PERIOD1: LINE=(BENDSECT,MULT1SECT1,DOUBLETSECT,MULT2SECT1,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+ MULT1SECT2: LINE=(3*(DR2P1M1),S02BE1A,2*(DR2P1M2))  ;
+! if you don't care about the cavity use: 
+
+ PERIOD2: LINE=(BENDSECT,MULT1SECT2,DOUBLETSECT,MULT2SECT2,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ PERIOD3: LINE=(BENDSECT,MULT1SECT3,DOUBLETSECT,MULT2SECT3,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ MULT1SECT4: LINE=(7*(DR3))  ;
+
+!   second multipoles section 
+
+ PERIOD4: LINE=(BENDSECT,MULT1SECT4,DOUBLETSECT,MULT2SECT4,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ PERIOD5: LINE=(BENDSECT,MULT1SECT5,DOUBLETSECT,MULT2SECT5,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ MULT1SECT6: LINE=(7*(DR3))  ;
+
+!   second multipoles section 
+
+ PERIOD6: LINE=(BENDSECT,MULT1SECT6,DOUBLETSECT,MULT2SECT6,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ PERIOD7: LINE=(BENDSECT,MULT1SECT7,DOUBLETSECT,MULT2SECT7,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ S08BE1A: LINE=(S02BE1A)     ;
+
+ MULT1SECT8: LINE=(3*(DR2P1M1),S08BE1A,2*(DR2P1M2))  ;
+! if you don't care about the cavity use: 
+
+ PERIOD8: LINE=(BENDSECT,MULT1SECT8,DOUBLETSECT,MULT2SECT8,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ PERIOD9: LINE=(BENDSECT,MULT1SECT9,DOUBLETSECT,MULT2SECT9,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ MULT1SECT10: LINE=(7*(DR3))  ;
+
+!   second multipoles section 
+
+ PERIOD10: LINE=(BENDSECT,MULT1SECT10,DOUBLETSECT,MULT2SECT10,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ PERIOD11: LINE=(BENDSECT,MULT1SECT11,DOUBLETSECT,MULT2SECT11,LASTQUAD)  ;
+
+
+
+
+                 !**************************! 
+
+ MULT1SECT12: LINE=(7*(DR3))  ;
+
+!   second multipoles section 
+
+ PERIOD12: LINE=(BENDSECT,MULT1SECT12,DOUBLETSECT,MULT2SECT12,LASTQUAD)  ;
+
+
+
+
+!************************************************************************* 
+
+SIS18LATTICE: LINE=(PERIOD1, PERIOD2, PERIOD3, PERIOD4, PERIOD5,
+PERIOD6,PERIOD7, PERIOD8, PERIOD9,PERIOD10,PERIOD11,PERIOD12)  ;
+
+!************************************************************************* 
+ S02KQ4,   KNL= {0.000 / 1.6}  ;! norm quad period 2  
+ S03KS3C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 3  chromat 
+ S04KQ4,   KNL= {0.000 / 1.6}  ;! norm quad period 4 
+ S05KS1C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 5  chromat 
+ S05KS3C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 5  chromat 
+ S06KM3QS, KNL= {0.000 / 1.6}  ;! norm sext period 5  chromat 
+ S06KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 6 
+ S07KS3C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 7  chromat 
+ S08KQ4,   KNL= {0.000 / 1.6}  ;! norm quad period 8 
+ S09KS1C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 9  chromat 
+ S09KS3C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 9  chromat 
+ S10KQ4,   KNL= {0.000 / 1.6}  ;! norm quad period 10 
+ S11KS1C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 11 chromat 
+ S11KS3C,  KNL= {0.,0.000 / 1.6}  ;! norm sext period 11 chromat 
+ S12KM3QS, KNL= {0.000 / 1.6}  ;! skew quad period 12 
+
+beam;
+ USE, period=PERIOD1  ;
+twiss;
+
+ select,flag=twiss,clear;
+   select,flag=twiss,column=name,s,L,alfx,alfy,betx,bety,dx,dpx,mux,muy;
+   twiss,file="twiss.dat";
+   setplot,post=2,ascale=1.5, lscale=1.5,rscale=1.5, sscale=1.5, lwidth=6;
+   PLOT, HAXIS=S,VAXIS1=BETX,VAXIS2=BETY,VAXIS3=DX,interpolate,colour=100;
+
+!========================================================================
+

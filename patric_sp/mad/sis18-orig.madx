@@ -1,0 +1,62 @@
+!                                    S I S 18
+TITLE, " -- SIS -- :  bend. quad. sex.  with correction to fringe ";
+
+
+
+!---------------------  DRIFT SPACES DEFINITION  ---------------------
+DR1: DRIFT, L=0.6450000;
+DR2: DRIFT, L=0.9700000;
+DR3: DRIFT, L=6.8390117;
+DR4: DRIFT, L=0.6000000;
+DR5: DRIFT, L=0.7098000;
+DR6: DRIFT, L=0.4998000;
+DRB: DRIFT, L= 2.617993877991;
+!---------------------------------------------------------------------
+
+!--------------------------  BENDING MAGNET ---------------------------
+ALPHA  := 15 * RADDEG;
+LL  := 150 * RADDEG;
+PFR := 7.3* RADDEG;
+FI  := 0.7;
+!fi=0.0;
+RB: SBEND,L= LL,ANGLE= ALPHA,E1= PFR,E2=PFR,HGAP= 0.035,FINT= FI;
+! ------------------- horizontal quadrupole ----------------------------
+QS1F:  QUADRUPOLE, L= 1.0400000,  K1=  0.357893011;
+QS2D:  QUADRUPOLE, L= 1.0400000,  K1= -0.335373024;
+QS3T:  QUADRUPOLE, L= 0.4804000,  K1=  0.0606702417;
+!QS1F:  QUADRUPOLE, L= 1.0400000,  K1=  0.30989596;
+!QS2D:  QUADRUPOLE, L= 1.0400000,  K1= -0.49964116;
+!QS3T:  QUADRUPOLE, L= 0.4804000,  K1=  0.62221964;
+!QS1F:  QUADRUPOLE, L= 1.0400000,  K1=  0.361646718;
+!QS2D:  QUADRUPOLE, L= 1.0400000,  K1= -0.361646718;
+!QS3T:  QUADRUPOLE, L= 0.4804000,  K1=  0.06222151;
+
+!---------------------------------------------------------------
+
+! ---------------------------  LINE DEFINITION ---------------------------
+CELLA:  LINE=(DR1,RB,DR2,RB,DR3,QS1F,DR4,QS2D,DR5,QS3T,DR6);
+!CELLA:  LINE=(DR1,DRB,DR2,DRB,DR3,QS1F,DR4,QS2D,DR5,QS3T,DR6);
+!------------------------------------------------------------------------
+MACHINE: LINE=(12*CELLA);
+
+beam;
+!USE, sequence=MACHINE;
+USE, sequence=CELLA;
+
+select, flag=twiss, clear;
+select, flag=twiss, column=name,keyword,s,mux,muy;
+
+
+select,flag=sectormap,clear;
+select,flag=sectormap,range=#s/#e;
+select,flag=twiss,clear;
+select,flag=twiss,column=name,keyword,s,L,mux,muy,alfx,alfy,betx,bety,dx,dmux;
+
+twiss,file=sis18_simple.sectormap,sectormap;
+twiss, table=twiss, chrom, deltap=1.0e-3, file=sis18_simple.twiss;
+twiss, save;
+
+setplot,post=2,ascale=1.5, lscale=1.5,rscale=1.5, sscale=1.5, lwidth=3;
+PLOT, HAXIS=S,VAXIS1=BETX,VAXIS2=BETY,VAXIS3=DX,spline,colour=100;
+
+stop;

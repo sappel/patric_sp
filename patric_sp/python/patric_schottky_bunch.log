@@ -1,0 +1,1523 @@
+This is pdfeTeXk, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=pdflatex 2008.7.10)  27 OCT 2008 12:59
+entering extended mode
+ file:line:error style messages enabled.
+**patric_schottky_bunch.py
+(./patric_schottky_bunch.py
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
+ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
+stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
+h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur
+kish, ukrainian, nohyphenation, loaded.
+
+./patric_schottky_bunch.py:1: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 "
+     ""
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no " in font nullfont!
+Missing character: There is no " in font nullfont!
+Missing character: There is no " in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no R in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no j in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no " in font nullfont!
+Missing character: There is no " in font nullfont!
+Missing character: There is no " in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 1--4
+[]
+ []
+
+
+./patric_schottky_bunch.py:5: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.5 f
+     rom math import *
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no f in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no * in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no s in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 5--9
+[]
+ []
+
+
+./patric_schottky_bunch.py:10: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.10 o
+      utputdir='/d/bhs01/boine/patric_schottky_bunch28/'   # should exist
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no ' in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no / in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+./patric_schottky_bunch.py:10: Missing $ inserted.
+<inserted text> 
+                $
+l.10 outputdir='/d/bhs01/boine/patric_
+                                      schottky_bunch28/'   # should exist
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 10.
+./patric_schottky_bunch.py:10: You can't use `macro parameter character #' in m
+ath mode.
+l.10 .../bhs01/boine/patric_schottky_bunch28/'   #
+                                                   should exist
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:11: You can't use `macro parameter character #' in m
+ath mode.
+l.11 runid=28                   #
+                                  run identification number (only out.dat)
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:12: Missing $ inserted.
+<inserted text> 
+                $
+l.12 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (187.73833pt too wide) in paragraph at lines 10--12
+[]$[]\OML/cmm/m/it/10 chottky[]unch\OT1/cmr/m/n/10 28\OML/cmm/m/it/10 =[]should
+existrunid \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (182.19432pt too wide) in paragraph at lines 10--12
+\OT1/cmr/m/n/10 28\OML/cmm/m/it/10 runidentificationnumber\OT1/cmr/m/n/10 (\OML
+/cmm/m/it/10 onlyout:dat\OT1/cmr/m/n/10 )$ 
+ []
+
+./patric_schottky_bunch.py:13: You can't use `macro parameter character #' in v
+ertical mode.
+l.13 #
+      -----MPI options------------------
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+./patric_schottky_bunch.py:13: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.13 #-
+       ----MPI options------------------
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no M in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 13--14
+[]
+ []
+
+
+./patric_schottky_bunch.py:15: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.15 n
+      um_procs=4
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no n in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no m in font nullfont!
+./patric_schottky_bunch.py:15: Missing $ inserted.
+<inserted text> 
+                $
+l.15 num_
+         procs=4
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./patric_schottky_bunch.py:17: Missing $ inserted.
+<inserted text> 
+                $
+l.17 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (53.82951pt too wide) in paragraph at lines 15--17
+[]$[]\OML/cmm/m/it/10 rocs \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (58.50194pt too wide) in paragraph at lines 15--17
+\OT1/cmr/m/n/10 4\OML/cmm/m/it/10 machines \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (43.29707pt too wide) in paragraph at lines 15--17
+\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 lxir\OT1/cmr/m/n/10 005[]]$ 
+ []
+
+./patric_schottky_bunch.py:18: You can't use `macro parameter character #' in v
+ertical mode.
+l.18 #
+      ----------------------------------
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+./patric_schottky_bunch.py:18: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 #-
+       ---------------------------------
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 18--19
+[] 
+ []
+
+
+./patric_schottky_bunch.py:20: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 p
+      atric_dict=OrderedDict()
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+./patric_schottky_bunch.py:20: Missing $ inserted.
+<inserted text> 
+                $
+l.20 patric_
+            dict=OrderedDict()
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./patric_schottky_bunch.py:21: Missing $ inserted.
+<inserted text> 
+                $
+l.21 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (46.60219pt too wide) in paragraph at lines 20--21
+[]$[]\OML/cmm/m/it/10 ict \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (64.9251pt too wide) in paragraph at lines 20--21
+\OML/cmm/m/it/10 OrderedDict\OT1/cmr/m/n/10 ()$ 
+ []
+
+
+./patric_schottky_bunch.py:22: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 p
+      atric_dict['NPIC']=400000
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+./patric_schottky_bunch.py:22: Missing $ inserted.
+<inserted text> 
+                $
+l.22 patric_
+            dict['NPIC']=400000
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./patric_schottky_bunch.py:31: You can't use `macro parameter character #' in m
+ath mode.
+l.31 patric_dict['current']=0.159 #
+                                    0.39
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:36: You can't use `macro parameter character #' in m
+ath mode.
+l.36 patric_dict['CF_advance_v']=97.3*pi/180.0 #
+                                                 129.3*pi/180.0
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:43: You can't use `macro parameter character #' in m
+ath mode.
+l.43 patric_dict['dqx_detune']=-0.0025/6.0   #
+                                               rms
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:44: You can't use `macro parameter character #' in m
+ath mode.
+l.44 patric_dict['dqy_detune']=-0.0025/6.0   #
+                                               rms
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:46: You can't use `macro parameter character #' in m
+ath mode.
+l.46 patric_dict['init_pic_xy']=0  #
+                                     0 (WB), 1 (KV), 2 (SG), 3 (GS)
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:47: You can't use `macro parameter character #' in m
+ath mode.
+l.47 patric_dict['init_pic_z']=4   #
+                                     1 (elliptic bunch), 0 (elliptic, coast)...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:47: You can't use `macro parameter character #' in m
+ath mode.
+l.47 ... 0 (elliptic, coast), 2 (Gauss, coast)   #
+                                                   was 4 !!!!
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:48: You can't use `macro parameter character #' in m
+ath mode.
+l.48 patric_dict['momentum_spread']=7.5e-3   #
+                                               6.0e-3 rms
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:53: You can't use `macro parameter character #' in m
+ath mode.
+l.53 patric_dict['offcenter']=0.0  #
+                                     !!! meters
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:54: You can't use `macro parameter character #' in m
+ath mode.
+l.54 patric_dict['bunchfactor']=0.45 #
+                                       0.35  # *1.5
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:54: You can't use `macro parameter character #' in m
+ath mode.
+l.54 patric_dict['bunchfactor']=0.45 # 0.35  #
+                                               *1.5
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:57: You can't use `macro parameter character #' in m
+ath mode.
+l.57 patric_dict['Rs']=0.0 #
+                             8.5e6
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:61: You can't use `macro parameter character #' in m
+ath mode.
+l.61 patric_dict['Zimage']=-7.0e7 #
+                                    -3.0e7/2.0
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:63: You can't use `macro parameter character #' in m
+ath mode.
+l.63 patric_dict['space_charge']=0   #
+                                         0 (off), 1 (self-consistent), 2 (li...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:64: You can't use `macro parameter character #' in m
+ath mode.
+l.64 patric_dict['imp_kick']=0       #
+                                         0 (off), 1 (on)
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:66: You can't use `macro parameter character #' in m
+ath mode.
+l.66 patric_dict['cavity']=1   #
+                                 0 (off), 1 (rf), 2 (barrier)
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:70: You can't use `macro parameter character #' in m
+ath mode.
+l.70 patric_dict['bc_end']=1    #
+                                   0 (open) , 1 (periodic)
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:71: You can't use `macro parameter character #' in m
+ath mode.
+l.71 patric_dict['print_cell']=120 #
+                                     120 !!!!
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:73: You can't use `macro parameter character #' in m
+ath mode.
+l.73 patric_dict['btf']=0   #
+                              was 0 !!!!!!
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:76: Missing $ inserted.
+<inserted text> 
+                $
+l.76 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (87.74591pt too wide) in paragraph at lines 22--76
+[]$[]\OML/cmm/m/it/10 ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 NPIC[]\OT1/cmr/m/n
+/10 ] =
+ []
+
+
+Overfull \hbox (112.45367pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 400000\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m
+/it/10 NX[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (96.41199pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 128\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it
+/10 NY[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (95.92587pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 128\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it
+/10 NZ[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (121.04333pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 256\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it
+/10 NZ[]unch[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (94.29169pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 64\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/
+10 cells[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (10.00003pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 4 \OMS/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (103.28316pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 4096\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/i
+t/10 e[]in[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (94.5787pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 200\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]
+ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 Z[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (89.53703pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 28\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]i
+ct\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 A[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (120.93764pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 238\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]
+ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 current[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (152.11609pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1590\OML/cmm/m/it/10 :\OT1/c
+mr/m/n/10 39\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 pip
+eradius[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (113.43135pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 05\OML/cmm/m/it/10 patric[]i
+ct\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 circum[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (121.01283pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 108\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]
+ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 gamma[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (129.22682pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 4\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 CF[]dvance[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (22.77785pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 97\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 3 \OMS/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (152.27269pt too wide) in paragraph at lines 22--76
+\OML/cmm/m/it/10 pi=\OT1/cmr/m/n/10 180\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/
+cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 CF[]dvance[]\OT1/cmr
+/m/n/10 ] =
+ []
+
+
+Overfull \hbox (22.77785pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 97\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 3 \OMS/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (64.0321pt too wide) in paragraph at lines 22--76
+\OML/cmm/m/it/10 pi=\OT1/cmr/m/n/10 180\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0129\O
+ML/cmm/m/it/10 :\OT1/cmr/m/n/10 3 \OMS/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (118.561pt too wide) in paragraph at lines 22--76
+\OML/cmm/m/it/10 pi=\OT1/cmr/m/n/10 180\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/
+cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 CF[]\OT1/cmr/m/n/10 
+] =
+ []
+
+
+Overfull \hbox (119.55928pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 CF[]ength[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (106.84393pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 18\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]i
+ct\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 NCF[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (92.56596pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 16\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/
+10 koct[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (104.64282pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 8\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 dQxm[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (35.55566pt too wide) in paragraph at lines 22--76
+\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 009 \OMS
+/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (126.967pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 35\OML/cmm/m/it/10 =\OT1/cmr
+/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ict\OT1/cm
+r/m/n/10 [[]\OML/cmm/m/it/10 dQym[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (35.55566pt too wide) in paragraph at lines 22--76
+\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 009 \OMS
+/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (144.87134pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 35\OML/cmm/m/it/10 =\OT1/cmr
+/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ict\OT1/cm
+r/m/n/10 [[]\OML/cmm/m/it/10 dqx[]etune[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (180.09372pt too wide) in paragraph at lines 22--76
+\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0025\OML
+/cmm/m/it/10 =\OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it
+/10 rmspatric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 dqy[]etune[]\OT1/cmr/m/n/
+10 ] =
+ []
+
+
+Overfull \hbox (175.89906pt too wide) in paragraph at lines 22--76
+\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0025\OML
+/cmm/m/it/10 =\OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it
+/10 rmspatric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 pic[]ubset[]\OT1/cmr/m/n/
+10 ] =
+ []
+
+
+Overfull \hbox (128.45435pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 10000\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/
+it/10 init[]ic[]y[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (229.73022pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 00(\OML/cmm/m/it/10 WB\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/
+cmr/m/n/10 1(\OML/cmm/m/it/10 KV\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/
+n/10 2(\OML/cmm/m/it/10 SG\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 3
+(\OML/cmm/m/it/10 GS\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/1
+0 [[]\OML/cmm/m/it/10 init[]ic[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (400.93646pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 41(\OML/cmm/m/it/10 ellipticbunch\OT1/cmr/m/n/10 )\OML/cmm/m/it
+/10 ; \OT1/cmr/m/n/10 0(\OML/cmm/m/it/10 elliptic; coast\OT1/cmr/m/n/10 )\OML/c
+mm/m/it/10 ; \OT1/cmr/m/n/10 2(\OML/cmm/m/it/10 Gauss; coast\OT1/cmr/m/n/10 )\O
+ML/cmm/m/it/10 was\OT1/cmr/m/n/10 4!!!!\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n
+/10 [[]\OML/cmm/m/it/10 momentum[]pread[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (25.21188pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 7\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 e \OMS/cms
+y/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (30.2119pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 36\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 e \OMS/cm
+sy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (159.82162pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 3\OML/cmm/m/it/10 rmspatric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/i
+t/10 rms[]mittance[]\OT1/cmr/m/n/10 0[]] =
+ []
+
+
+Overfull \hbox (149.11444pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 rms[]mittance[]\OT1/cmr/m/n/10 0[]] =
+ []
+
+
+Overfull \hbox (123.94522pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 mismatch[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (123.71724pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 mismatch[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (121.87167pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 offcenter[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (171.49216pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0!!!\OML/cmm/m/it/10 metersp
+atric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 bunchfactor[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (40.55568pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 450\OML/cmm/m/it/10 :\OT1/cm
+r/m/n/10 35 \OMS/cmsy/m/n/10 ^^C
+ []
+
+
+Overfull \hbox (94.83746pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 5\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 dqci[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (96.1817pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 dqcr[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (107.17249pt too wide) in paragraph at lines 22--76
+\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 003\OML/
+cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 Rs[]\OT1/cmr/m/n/10 
+] =
+ []
+
+
+Overfull \hbox (119.60658pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 08\OML/cmm/m/it/10 :\OT1/cmr
+/m/n/10 5\OML/cmm/m/it/10 e\OT1/cmr/m/n/10 6\OML/cmm/m/it/10 patric[]ict\OT1/cm
+r/m/n/10 [[]\OML/cmm/m/it/10 nres[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (94.63007pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 10\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]i
+ct\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 Qs[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (91.93008pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ic
+t\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 leit[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (121.53084pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 e\OT1/cmr/
+m/n/10 5\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 Zimage[
+]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (37.9897pt too wide) in paragraph at lines 22--76
+\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 7\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cm
+m/m/it/10 e\OT1/cmr/m/n/10 7 \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (169.6219pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 3\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 e\OT1/cmr/
+m/n/10 7\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0\
+OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 madx[]nput[]ile[
+]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (122.94298pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/1
+0 space[]harge[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (74.1773pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 00(\OML/cmm/m/it/10 off\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1
+/cmr/m/n/10 1(\OML/cmm/m/it/10 self \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (255.51195pt too wide) in paragraph at lines 22--76
+\OML/cmm/m/it/10 consistent\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 
+2(\OML/cmm/m/it/10 linear\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 3(
+\OML/cmm/m/it/10 nonlinear\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 patric[]ict\OT1/cmr
+/m/n/10 [[]\OML/cmm/m/it/10 imp[]ick[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (152.40247pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 00(\OML/cmm/m/it/10 off\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1
+/cmr/m/n/10 1(\OML/cmm/m/it/10 on\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 patric[]ict\
+OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 sliced[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (96.3965pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/1
+0 cavity[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (230.5214pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 10(\OML/cmm/m/it/10 off\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1
+/cmr/m/n/10 1(\OML/cmm/m/it/10 rf\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT1/cmr/m
+/n/10 2(\OML/cmm/m/it/10 barrier\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 patric[]ict\O
+T1/cmr/m/n/10 [[]\OML/cmm/m/it/10 octupole[]ick[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (131.76935pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/1
+0 ampdetun[]ick[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (103.05096pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/1
+0 chroma[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (93.37975pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/1
+0 bc[]nd[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (193.5135pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 10(\OML/cmm/m/it/10 open\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OT
+1/cmr/m/n/10 1(\OML/cmm/m/it/10 periodic\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 patri
+c[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 print[]ell[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (147.52747pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 120120!!!!\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/c
+mm/m/it/10 footprint[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (83.13423pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/1
+0 btf[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (163.78561pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 was\OT1/cmr/m/n/10 0!!!!!!\OML/cmm/m/it/10 pa
+tric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/10 btf[]armonic[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (104.31944pt too wide) in paragraph at lines 22--76
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 patric[]ict\OT1/cmr/m/n/10 [[]\OML/cmm/m/it/1
+0 ausgabe[]\OT1/cmr/m/n/10 ] =
+ []
+
+
+Overfull \hbox (41.98923pt too wide) in paragraph at lines 22--76
+\OML/cmm/m/it/10 outputdir$ 
+ []
+
+./patric_schottky_bunch.py:77: You can't use `macro parameter character #' in v
+ertical mode.
+l.77 #
+      -------------------run-------------------------------------
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+./patric_schottky_bunch.py:77: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.77 #-
+       ------------------run-------------------------------------
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 77--78
+[] 
+ []
+
+./patric_schottky_bunch.py:79: You can't use `macro parameter character #' in v
+ertical mode.
+l.79 #
+       create new PATRIC configuration file
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+./patric_schottky_bunch.py:79: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.79 # c
+        reate new PATRIC configuration file
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no R in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no ( in font nullfont!
+Missing character: There is no ' in font nullfont!
+./patric_schottky_bunch.py:81: You can't use `macro parameter character #' in h
+orizontal mode.
+l.81 #
+       write PATRIC configuration file in output dir:
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no w in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no R in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+./patric_schottky_bunch.py:82: Missing $ inserted.
+<inserted text> 
+                $
+l.82 for x,y in patric_
+                       dict.iteritems():
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./patric_schottky_bunch.py:85: You can't use `macro parameter character #' in m
+ath mode.
+l.85 #
+       mpi machine configuation file:
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:88: You can't use `macro parameter character #' in m
+ath mode.
+<recently read> ##
+                  
+l.88 #
+      machinefile.write('%s:4\n' %(machines[1]))
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:90: You can't use `macro parameter character #' in m
+ath mode.
+l.90 #
+       start PATRIC/mpi job:
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+./patric_schottky_bunch.py:97: Missing $ inserted.
+<inserted text> 
+                $
+l.97 
+     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 79--97
+[]
+ []
+
+
+Overfull \hbox (73.83978pt too wide) in paragraph at lines 79--97
+[]\OML/cmm/m/it/10 ict:iteritems\OT1/cmr/m/n/10 () :
+ []
+
+
+Overfull \hbox (265.49582pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 outfile:write\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 outfile:close
+\OT1/cmr/m/n/10 ()\OML/cmm/m/it/10 mpimachineconfiguationfile \OT1/cmr/m/n/10 :
+
+ []
+
+
+Overfull \hbox (66.06865pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 machinefile \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (486.75885pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 open\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 machines:tmp[];[] w[]\
+OT1/cmr/m/n/10 )\OML/cmm/m/it/10 machinefile:write\OT1/cmr/m/n/10 ([]\OML/cmm/m
+/it/10 machinefile:write\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 machinefile:close\O
+T1/cmr/m/n/10 ()\OML/cmm/m/it/10 startPATRIC=mpijob \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (46.96826pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 thishost \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (128.96916pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 gethostname\OT1/cmr/m/n/10 ()\OML/cmm/m/it/10 ifthishost \OT1/
+cmr/m/n/10 ==
+ []
+
+
+Overfull \hbox (59.0575pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 machines\OT1/cmr/m/n/10 [0] :
+ []
+
+
+Overfull \hbox (28.86807pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 cmd \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (73.91762pt too wide) in paragraph at lines 79--97
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 nohupmpirun \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (33.7697pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 npelse \OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (28.86807pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 cmd \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (73.91762pt too wide) in paragraph at lines 79--97
+\OT1/cmr/m/n/10 "\OML/cmm/m/it/10 nohupmpirun \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (39.4492pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 nolocal \OMS/cmsy/m/n/10 ^^@
+ []
+
+
+Overfull \hbox (81.12059pt too wide) in paragraph at lines 79--97
+\OML/cmm/m/it/10 npos:system\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 cmd\OT1/cmr/m/n/1
+0 )$ 
+ []
+
+./patric_schottky_bunch.py:99: You can't use `macro parameter character #' in v
+ertical mode.
+l.99 #
+      -------------------------------------------------------------
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+
+./patric_schottky_bunch.py:99: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.99 #-
+       ------------------------------------------------------------
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no - in font nullfont!
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 99--100
+[] 
+ []
+
+)
+! Emergency stop.
+<*> patric_schottky_bunch.py
+                            
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 8 strings out of 94500
+ 207 string characters out of 1176114
+ 56348 words of memory out of 1500000
+ 3275 multiletter control sequences out of 10000+50000
+ 3640 words of font info for 14 fonts, out of 1200000 for 2000
+ 580 hyphenation exceptions out of 8191
+ 18i,2n,12p,161b,56s stack positions out of 5000i,500n,6000p,200000b,5000s
+PDF statistics:
+ 0 PDF objects out of 65536
+ 0 named destinations out of 20000
+ 1 words of extra memory for PDF output out of 65536
+No pages of output.

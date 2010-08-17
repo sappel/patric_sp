@@ -1,0 +1,376 @@
+\section{Pic Class Reference}
+\label{classPic}\index{Pic@{Pic}}
+{\bf Particle} container. 
+
+
+{\tt \#include $<$Pic.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Pic} ({\bf Syn\-Particle} $\ast$ptr,double q, int n, string filename)\label{classPic_a1}
+
+\item 
+double {\bf get\_\-charge} ()\label{classPic_a3}
+
+\item 
+int {\bf get\_\-size} ()\label{classPic_a4}
+
+\item 
+void {\bf waterbag\_\-xy} (double emittance\_\-x, double emittance\_\-y, double alpha\_\-x, double beta\_\-x, double beta\_\-x, double beta\_\-y, double D0, double Ds0, double centering, double {\bf circum}, double zlm, double {\bf chroma}, double tunex, long $\ast$d)\label{classPic_a5}
+
+\begin{CompactList}\small\item\em tranversal waterbag distribution:\item\end{CompactList}\item 
+void {\bf KV\_\-xy} (double emittance\_\-x, double emittance\_\-y, double alpha\_\-x, double alpha\_\-y, double beta\_\-x, double beta\_\-y, double D0, double Ds0, double centering, double {\bf nres}, double {\bf circum}, double zlm, double {\bf chroma}, double tunex, long $\ast$d)\label{classPic_a6}
+
+\begin{CompactList}\small\item\em KV distribution.\item\end{CompactList}\item 
+void {\bf SG} (double emittance\_\-x, double emittance\_\-y, double alpha\_\-x, double alpha\_\-y, double beta\_\-x, double beta\_\-y, double D0, double Ds0, double centering, long $\ast$d)\label{classPic_a7}
+
+\begin{CompactList}\small\item\em Semi-gaussian.\item\end{CompactList}\item 
+void {\bf Gauss\_\-xy} (double emittance\_\-x, double emittance\_\-y, double alpha\_\-x, double alpha\_\-y, double beta\_\-x, double beta\_\-y, double D0, double Ds0, double centering, long $\ast$d)\label{classPic_a8}
+
+\begin{CompactList}\small\item\em Gaussian.\item\end{CompactList}\item 
+void {\bf parabolic} (double z0, double zlm, double dp0, long Np, long $\ast$d)\label{classPic_a9}
+
+\begin{CompactList}\small\item\em Parabolic bunch.\item\end{CompactList}\item 
+void {\bf parabolic\_\-dc} (double length, double dp0, long Np, long $\ast$d)\label{classPic_a10}
+
+\begin{CompactList}\small\item\em coasting beam with parabolic momentum spread distribution\item\end{CompactList}\item 
+void {\bf gaussz} (double dp0, long $\ast$d)\label{classPic_a11}
+
+\begin{CompactList}\small\item\em Gaussian momentum spread.\item\end{CompactList}\item 
+void {\bf coasting\_\-beam} (long Np, double length, long $\ast$d)\label{classPic_a12}
+
+\begin{CompactList}\small\item\em coasting beam\item\end{CompactList}\item 
+void {\bf bunch\_\-gauss} (double zlm, double dp0, long Np, double {\bf circum}, long $\ast$d)\label{classPic_a13}
+
+\begin{CompactList}\small\item\em Gaussian bunch.\item\end{CompactList}\item 
+void {\bf bunch\_\-const} (double zlm, double dp0, int linrf, double {\bf circum}, long Np, long $\ast$d)\label{classPic_a14}
+
+\begin{CompactList}\small\item\em Constant bunch dist.\item\end{CompactList}\item 
+void {\bf barrier\_\-air\_\-bag} (double zlm, double dp0, long Np, long $\ast$d)\label{classPic_a15}
+
+\begin{CompactList}\small\item\em barrier air bag\item\end{CompactList}\item 
+void {\bf bunch\_\-air\_\-bag} (double zlm, double dp0, double {\bf circum}, long Np, long $\ast$d)\label{classPic_a16}
+
+\begin{CompactList}\small\item\em bunch air bag\item\end{CompactList}\item 
+void {\bf print} (int subset)\label{classPic_a17}
+
+\begin{CompactList}\small\item\em basic PIC output:\item\end{CompactList}\item 
+double {\bf rms\_\-emittance\_\-x} ()\label{classPic_a18}
+
+\item 
+double {\bf rms\_\-emittance\_\-y} ()\label{classPic_a19}
+
+\item 
+double {\bf x\_\-rms} ()\label{classPic_a20}
+
+\item 
+double {\bf x\_\-max} ()\label{classPic_a21}
+
+\item 
+double {\bf y\_\-rms} ()\label{classPic_a22}
+
+\item 
+double {\bf y\_\-max} ()\label{classPic_a23}
+
+\item 
+double {\bf z\_\-mean} ()\label{classPic_a24}
+
+\item 
+double {\bf z\_\-min} ()\label{classPic_a25}
+
+\item 
+double {\bf z\_\-max} ()\label{classPic_a26}
+
+\item 
+double {\bf z2\_\-mean} ()\label{classPic_a27}
+
+\item 
+double {\bf rms\_\-z\_\-width} ()\label{classPic_a28}
+
+\item 
+double {\bf pz\_\-mean} ()\label{classPic_a29}
+
+\item 
+double {\bf pz2\_\-mean} ()\label{classPic_a30}
+
+\item 
+double {\bf rms\_\-momentum\_\-spread} ()\label{classPic_a31}
+
+\item 
+double {\bf x2y2} ()\label{classPic_a32}
+
+\item 
+double {\bf xy} ()\label{classPic_a33}
+
+\item 
+double {\bf xzn} (double n, double zlm)\label{classPic_a34}
+
+\item 
+double {\bf offset\_\-x} ()\label{classPic_a35}
+
+\item 
+double {\bf offset\_\-y} ()\label{classPic_a36}
+
+\item 
+double {\bf entropy} (Grid2D \&xsys)\label{classPic_a37}
+
+\item 
+void {\bf update\_\-wavelength\_\-h} (double ds, double offset\_\-x)\label{classPic_a38}
+
+\item 
+void {\bf update\_\-wavelength\_\-v} (double ds)\label{classPic_a39}
+
+\item 
+double {\bf get\_\-wavelength\_\-h} (int j)
+\item 
+double {\bf get\_\-wavelength\_\-v} (int j)
+\item 
+double {\bf rms\_\-wavelength\_\-h} ()\label{classPic_a42}
+
+\item 
+double {\bf rms\_\-wavelength\_\-v} ()\label{classPic_a43}
+
+\item 
+void {\bf store\_\-old\_\-coordinates} ()
+\item 
+double {\bf get\_\-phaseadvance\_\-h} (int j)\label{classPic_a45}
+
+\item 
+double {\bf get\_\-phaseadvance\_\-v} (int j)\label{classPic_a46}
+
+\item 
+double {\bf rms\_\-phaseadvance\_\-h} ()\label{classPic_a47}
+
+\item 
+double {\bf rms\_\-phaseadvance\_\-v} ()\label{classPic_a48}
+
+\item 
+void {\bf transport} ({\bf Sector\-Map} $\ast$M, double boundary)\label{classPic_a49}
+
+\begin{CompactList}\small\item\em particle transport using sector map\item\end{CompactList}\item 
+void {\bf kick} (Grid2D \&Ex, Grid2D \&Ey, double ds)\label{classPic_a50}
+
+\begin{CompactList}\small\item\em space charge kick\item\end{CompactList}\item 
+void {\bf kick} (Grid3D \&Ex, Grid3D \&Ey, double ds)\label{classPic_a51}
+
+\item 
+void {\bf kick} (double fx, double fy)\label{classPic_a52}
+
+\begin{CompactList}\small\item\em constant kick\item\end{CompactList}\item 
+void {\bf cavity\_\-kick} (double voltage0, int harmonic, double R)\label{classPic_a53}
+
+\begin{CompactList}\small\item\em cavity kick\item\end{CompactList}\item 
+void {\bf cavity\_\-kick\_\-linear} (double voltage0, int harmonic, double R)\label{classPic_a54}
+
+\item 
+void {\bf barrier\_\-kick} (double zm1, double zm2)\label{classPic_a55}
+
+\begin{CompactList}\small\item\em barrier bucket kick (reflection at zm1 and zm2)\item\end{CompactList}\item 
+void {\bf kick} ({\bf Thin\-Lens} \&M, double ds)\label{classPic_a56}
+
+\begin{CompactList}\small\item\em thin lens kick\item\end{CompactList}\item 
+void {\bf impedance\_\-kick} (Grid1D \&kick, double {\bf circum}, double ds)\label{classPic_a57}
+
+\begin{CompactList}\small\item\em transverse impedance dipole kick\item\end{CompactList}\item 
+void {\bf linear\_\-SC\_\-kick} (double {\bf d\-Qxm}, double {\bf d\-Qym}, double tunex, double tuney, Grid1D \&ldy, double ldy0, Grid1D \&dipole\_\-current\_\-x, Grid1D \&dipole\_\-current\_\-y, double {\bf circum}, double ds)\label{classPic_a58}
+
+\begin{CompactList}\small\item\em non/linear transverse space charge kick\item\end{CompactList}\item 
+void {\bf nonlinear\_\-SC\_\-kick} (double xrms, double yrms, double {\bf d\-Qxm}, double {\bf d\-Qym}, double tunex, double tuney, Grid1D \&ldy, double ldy0, double {\bf circum}, double ds)\label{classPic_a59}
+
+\item 
+void {\bf dipole\_\-kick\_\-simple} (double {\bf d\-Qxm}, double {\bf d\-Qym}, double tunex, double tuney, Grid1D \&ldy, double ldy0, Grid1D \&dipole\_\-current\_\-x, Grid1D \&dipole\_\-current\_\-y, double {\bf circum}, double ds)\label{classPic_a60}
+
+\item 
+double {\bf dipole\_\-mod\_\-kick} (double t, double ds, double {\bf circum}, double theta, double freq0, double freq1, double tend, int n, long $\ast$d)
+\begin{CompactList}\small\item\em btf noise kick\item\end{CompactList}\item 
+double {\bf dipole\_\-mod\_\-kick} (double t, double ds, double {\bf circum}, double theta, double freq, int n)\label{classPic_a62}
+
+\begin{CompactList}\small\item\em btf kick\item\end{CompactList}\item 
+double {\bf pickup\_\-signal} (Grid1D \&dipole\_\-current, double {\bf circum}, double t)\label{classPic_a63}
+
+\begin{CompactList}\small\item\em signal from pickup\item\end{CompactList}\item 
+void {\bf langevin} (double beta\_\-fxy, double beta\_\-fz, double Dxy, double Dz, double ds, double betx, double bety, long $\ast$d)\label{classPic_a64}
+
+\begin{CompactList}\small\item\em add friction and diffusion (simple Fokker-Planck)\item\end{CompactList}\item 
+void {\bf gather\-Z} (double pic\_\-charge, Grid1D \&target)\label{classPic_a65}
+
+\item 
+void {\bf gather\-X} (double pic\_\-charge, Grid1D \&target)\label{classPic_a66}
+
+\item 
+void {\bf gather\-Xs} (double pic\_\-charge, Grid1D \&target)\label{classPic_a67}
+
+\item 
+void {\bf gather\-Y} (double pic\_\-charge, Grid1D \&target)\label{classPic_a68}
+
+\item 
+void {\bf gather\-XY} (double pic\_\-charge, Grid2D \&target)\label{classPic_a69}
+
+\item 
+void {\bf gather\-XYZ} (double pic\_\-charge, Grid3D \&target)\label{classPic_a70}
+
+\item 
+void {\bf gather\-XXs} (double pic\_\-charge, Grid2D \&target)\label{classPic_a71}
+
+\item 
+void {\bf gather\-ZX} (double pic\_\-charge, Grid2D \&target)\label{classPic_a72}
+
+\item 
+void {\bf gather\-YYs} (double pic\_\-charge, Grid2D \&target)\label{classPic_a73}
+
+\item 
+void {\bf gather\-Xs\-Ys} (double pic\_\-charge, Grid2D \&target)\label{classPic_a74}
+
+\item 
+vector$<$ {\bf Particle} $>$ {\bf get\_\-particles\_\-left} (double length)\label{classPic_a75}
+
+\item 
+vector$<$ {\bf Particle} $>$ {\bf get\_\-particles\_\-right} (double length)\label{classPic_a76}
+
+\item 
+void {\bf add\_\-particles} (vector$<$ {\bf Particle} $>$ \&part)\label{classPic_a77}
+
+\item 
+void {\bf periodic\_\-bc} (double length)\label{classPic_a78}
+
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+double {\bf z1}\label{classPic_m0}
+
+\begin{CompactList}\small\item\em left and right boundaries of the slice\item\end{CompactList}\item 
+double {\bf z2}\label{classPic_m1}
+
+\begin{CompactList}\small\item\em left and right boundaries of the slice\item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+{\bf Particle} container.
+
+
+
+Definition at line 33 of file Pic.h.
+
+\subsection{Member Function Documentation}
+\index{dipole_mod_kick@{dipole\_\-mod\_\-kick}!Pic@{Pic}}\index{Pic@{Pic}!dipole_mod_kick@{dipole\_\-mod\_\-kick}}\index{Pic@{Pic}!dipole_mod_kick@{dipole\_\-mod\_\-kick}}
+\index{dipole_mod_kick@{dipole\_\-mod\_\-kick}!Pic@{Pic}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Pic::dipole\_\-mod\_\-kick (double {\em t}, double {\em ds}, double {\em circum}, double {\em theta}, double {\em freq0}, double {\em freq1}, double {\em tend}, int {\em n}, long $\ast$ {\em d})}\label{classPic_a61}
+
+
+btf noise kick
+
+Bandwidth limited noise dipole modulation kick for BTF.
+
+Input
+
+time: t step: ds kick angle: theta bandwidth: freq0, freq1 simulation duration: tend harmonic: n random number initialization: d
+
+Output
+
+xs kick 
+
+Definition at line 529 of file Pic.cpp.
+
+References Syn\-Particle::beta0, and circum.
+
+
+
+\footnotesize\begin{verbatim}531 {
+532   double dtheta=0.0, R=circum/(2.0*PI), beta0=SP->beta0;
+533   double dfreq=1.0/(tend);
+534   const int Nran_max=10000;
+535   int Nran=(int)floor((freq1-freq0)/dfreq);
+536   static int flag=0;
+537   static double freq[Nran_max];
+538   static double phase[Nran_max];
+539   if (Nran >= Nran_max) { cout << "dipole kick: Nran > Nran_max !"; exit(0); }
+540   
+541   if (flag==0)
+542           {
+543            for (int j=0; j<Nran; j++)
+544                    {
+545                     //freq[j]=freq0+(freq1-freq0)*ran1(d);
+546                     freq[j]=floor(freq0/dfreq)*dfreq+j*dfreq;
+547                     phase[j]=PI*ran1(d); 
+548                    }       
+549            flag=1;        
+550           }
+551           
+552   for (int l=0; l<Nran; l++)
+553           dtheta+=theta*cos(2.0*PI*freq[l]*t+phase[l])/Nran;
+554   
+555   if (t < 20.0/freq0)
+556           dtheta=dtheta*t*freq0/20.0; 
+557   
+558   for(long j = 0; j < pics.size(); j++)
+559    {   
+560     pics[j].xs+=ds/R*dtheta*cos(n/R*pics[j].z);
+561    }
+562    
+563  return 0.5*dtheta*beta0*clight*cos(n/R*beta0*clight*t);
+564 }
+\end{verbatim}\normalsize 
+\index{get_wavelength_h@{get\_\-wavelength\_\-h}!Pic@{Pic}}\index{Pic@{Pic}!get_wavelength_h@{get\_\-wavelength\_\-h}}\index{Pic@{Pic}!get_wavelength_h@{get\_\-wavelength\_\-h}}
+\index{get_wavelength_h@{get\_\-wavelength\_\-h}!Pic@{Pic}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Pic::get\_\-wavelength\_\-h (int {\em j})}\label{classPic_a40}
+
+
+Calculates the horizontal phase advance per cell from the exit coordinates of the previous two cells. Does not work with finite dispersion yet. 
+
+Definition at line 1102 of file Pic.cpp.
+
+
+
+\footnotesize\begin{verbatim}1103 {
+1104  return pics[j].lambda_h;
+1105 }
+\end{verbatim}\normalsize 
+\index{get_wavelength_v@{get\_\-wavelength\_\-v}!Pic@{Pic}}\index{Pic@{Pic}!get_wavelength_v@{get\_\-wavelength\_\-v}}\index{Pic@{Pic}!get_wavelength_v@{get\_\-wavelength\_\-v}}
+\index{get_wavelength_v@{get\_\-wavelength\_\-v}!Pic@{Pic}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}double Pic::get\_\-wavelength\_\-v (int {\em j})}\label{classPic_a41}
+
+
+Calculates the vertical phase advance per cell from the exit coordinates of the previous two cells. Does not work with finite dispersion yet. 
+
+Definition at line 1135 of file Pic.cpp.
+
+
+
+\footnotesize\begin{verbatim}1136 {
+1137  return pics[j].lambda_v;
+1138 }
+\end{verbatim}\normalsize 
+\index{store_old_coordinates@{store\_\-old\_\-coordinates}!Pic@{Pic}}\index{Pic@{Pic}!store_old_coordinates@{store\_\-old\_\-coordinates}}\index{Pic@{Pic}!store_old_coordinates@{store\_\-old\_\-coordinates}}
+\index{store_old_coordinates@{store\_\-old\_\-coordinates}!Pic@{Pic}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Pic::store\_\-old\_\-coordinates ()}\label{classPic_a44}
+
+
+In order to calculate the instantanous phase advance we need the exit coordinates from the previous two cells 
+
+Definition at line 1079 of file Pic.cpp.
+
+
+
+\footnotesize\begin{verbatim}1080 {
+1081  int n=pics.size();
+1082  for(int j=0; j<n; j++) 
+1083   {
+1084    pics[j].x2=pics[j].x1;
+1085    pics[j].xs2=pics[j].xs1;
+1086    pics[j].x1=pics[j].x;
+1087    pics[j].xs1=pics[j].xs;
+1088    pics[j].y2=pics[j].y1;
+1089    pics[j].ys2=pics[j].ys1;
+1090    pics[j].y1=pics[j].y;
+1091    pics[j].ys1=pics[j].ys;
+1092   }
+1093 }
+\end{verbatim}\normalsize 
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Pic.h\item 
+Pic.cpp\end{CompactItemize}

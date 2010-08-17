@@ -1,0 +1,226 @@
+\section{Beam\-Line Class Reference}
+\label{classBeamLine}\index{BeamLine@{BeamLine}}
+Container class (List) for sector maps. 
+
+
+{\tt \#include $<$Sector\-Map.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Beam\-Line} (string dir)
+\begin{CompactList}\small\item\em generate beam line from MADX files\item\end{CompactList}\item 
+{\bf Beam\-Line} (const Beam\-Line \&B)\label{classBeamLine_a2}
+
+\item 
+void {\bf init} (Beam\-Line \&B)\label{classBeamLine_a4}
+
+\item 
+void {\bf init} (string dir)\label{classBeamLine_a5}
+
+\item 
+void {\bf read\_\-madx\_\-twiss} (string fname)
+\begin{CompactList}\small\item\em read madx twiss file\item\end{CompactList}\item 
+void {\bf read\_\-madx\_\-sectormap} (string fname)
+\begin{CompactList}\small\item\em read madx sectormap file\item\end{CompactList}\item 
+int {\bf get\_\-size} ()\label{classBeamLine_a8}
+
+\item 
+double {\bf get\_\-L} ()\label{classBeamLine_a9}
+
+\item 
+list$<$ {\bf Sector\-Map} $>$::iterator {\bf get\_\-element} ()\label{classBeamLine_a10}
+
+\item 
+list$<$ {\bf Sector\-Map} $>$::iterator {\bf get\_\-first\_\-element} ()\label{classBeamLine_a11}
+
+\item 
+list$<$ {\bf Sector\-Map} $>$::iterator {\bf get\_\-end\_\-element} ()\label{classBeamLine_a12}
+
+\item 
+void {\bf next\_\-element} ()\label{classBeamLine_a13}
+
+\item 
+void {\bf first\_\-element} ()\label{classBeamLine_a14}
+
+\item 
+void {\bf last\_\-element} ()\label{classBeamLine_a15}
+
+\item 
+void {\bf set\_\-element} (int j)\label{classBeamLine_a16}
+
+\item 
+void {\bf add\_\-map} ({\bf Sector\-Map} \&M)\label{classBeamLine_a17}
+
+\begin{CompactList}\small\item\em add a sectormap\item\end{CompactList}\item 
+void {\bf phase\_\-advance} (double \&sigx, double \&sigy)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Container class (List) for sector maps.
+
+
+
+Definition at line 58 of file Sector\-Map.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{BeamLine@{BeamLine}!BeamLine@{BeamLine}}\index{BeamLine@{BeamLine}!BeamLine@{BeamLine}}\index{BeamLine@{Beam\-Line}!BeamLine@{BeamLine}}
+\index{BeamLine@{BeamLine}!BeamLine@{Beam\-Line}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Beam\-Line::Beam\-Line (string {\em dir})}\label{classBeamLine_a1}
+
+
+generate beam line from MADX files
+
+Constructs a beam line from MADX twiss and sectormap file in the dir directory. Sets the iterator to the first element. 
+
+Definition at line 123 of file Sector\-Map.cpp.
+
+References read\_\-madx\_\-sectormap(), and read\_\-madx\_\-twiss().
+
+
+
+\footnotesize\begin{verbatim}124 {
+125   read_madx_twiss(dir + "/twiss");
+126   read_madx_sectormap(dir + "/sectormap");
+127   element=line.begin();
+128 }
+\end{verbatim}\normalsize 
+
+
+\subsection{Member Function Documentation}
+\index{phase_advance@{phase\_\-advance}!BeamLine@{BeamLine}}\index{BeamLine@{BeamLine}!phase_advance@{phase\_\-advance}}\index{BeamLine@{Beam\-Line}!phase_advance@{phase\_\-advance}}
+\index{phase_advance@{phase\_\-advance}!BeamLine@{Beam\-Line}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Beam\-Line::phase\_\-advance (double \& {\em sigx}, double \& {\em sigy})}\label{classBeamLine_a18}
+
+
+Phase advances calculated from elements. 
+
+Definition at line 282 of file Sector\-Map.cpp.
+
+References Sector\-Map::get\_\-T().
+
+
+
+\footnotesize\begin{verbatim}283 {
+284  list<SectorMap>::iterator pos = line.begin();
+285  SectorMap tmap(*pos->get_map());
+286  SectorMap tmap2;
+287  pos++;
+288  list<SectorMap>::iterator pos0 = pos;
+289  for (pos = pos0; pos != line.end(); pos++)
+290        {
+291          tmap2=pos->operator*(tmap);
+292          tmap=tmap2;
+293         }        
+294  sigx=acos(0.5*(tmap.get_T(0,0)+tmap.get_T(1,1)));
+295  sigy=acos(0.5*(tmap.get_T(2,2)+tmap.get_T(3,3)));
+296  
+297 }
+\end{verbatim}\normalsize 
+\index{read_madx_sectormap@{read\_\-madx\_\-sectormap}!BeamLine@{BeamLine}}\index{BeamLine@{BeamLine}!read_madx_sectormap@{read\_\-madx\_\-sectormap}}\index{BeamLine@{Beam\-Line}!read_madx_sectormap@{read\_\-madx\_\-sectormap}}
+\index{read_madx_sectormap@{read\_\-madx\_\-sectormap}!BeamLine@{Beam\-Line}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Beam\-Line::read\_\-madx\_\-sectormap (string {\em fname})}\label{classBeamLine_a7}
+
+
+read madx sectormap file
+
+Initializes all sectormaps in the beam line. This function must be called after read\_\-madx\_\-twiss. 
+
+Definition at line 178 of file Sector\-Map.cpp.
+
+Referenced by Beam\-Line().
+
+
+
+\footnotesize\begin{verbatim}179 {
+180   int j,l,u;
+181   list<SectorMap>::iterator pos=line.begin();
+182   double ddummy;
+183   string sdummy;  
+184 
+185   ifstream mapfile(fname.c_str());
+186   
+187   mapfile >> ddummy >> sdummy;
+188   for(l = 0; l < 43; l++)
+189    for(j = 0; j < 6 ; j++)  
+190     mapfile >> ddummy;
+191 
+192   for(u=0; u < line.size(); u++)   
+193     {
+194      mapfile >> ddummy >> sdummy;
+195      for(j = 0; j < 6; j++)
+196        mapfile >> pos->get_K(j); 
+197      for(l = 0; l < 6; l++) 
+198        for(j = 0; j < 6; j++)
+199           mapfile >> pos->get_T(j,l);
+200 
+201      //for(l = 0; l < 6; l++){ 
+202      //  for(j = 0; j < 6; j++)
+203      // cout << pos->get_T(l,j) << " ";
+204      // cout << endl; }
+205      // cout << endl;
+206 
+207      for(l = 0; l < 36; l++)
+208       for(j = 0; j < 6 ; j++)  
+209         mapfile >> ddummy;
+210 
+211      pos++; 
+212 
+213     }
+214   
+215   mapfile.close();
+216   
+217 }
+\end{verbatim}\normalsize 
+\index{read_madx_twiss@{read\_\-madx\_\-twiss}!BeamLine@{BeamLine}}\index{BeamLine@{BeamLine}!read_madx_twiss@{read\_\-madx\_\-twiss}}\index{BeamLine@{Beam\-Line}!read_madx_twiss@{read\_\-madx\_\-twiss}}
+\index{read_madx_twiss@{read\_\-madx\_\-twiss}!BeamLine@{Beam\-Line}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Beam\-Line::read\_\-madx\_\-twiss (string {\em fname})}\label{classBeamLine_a6}
+
+
+read madx twiss file
+
+Reads the MADX twiss file and generates the beam line. This function needs to be called first. 
+
+Definition at line 143 of file Sector\-Map.cpp.
+
+References Twiss\-P::alpx, Twiss\-P::alpy, Twiss\-P::betx, Twiss\-P::bety, Twiss\-P::Dx, Sector\-Map::get\_\-L(), Sector\-Map::get\_\-name(), and Sector\-Map::get\_\-twiss().
+
+Referenced by Beam\-Line().
+
+
+
+\footnotesize\begin{verbatim}144 {
+145   char charline[200];
+146   string str;
+147   SectorMap SMap;
+148   double s,l;
+149   TwissP tw; 
+150 
+151   ifstream twissfile(fname.c_str());
+152 
+153   do {
+154   twissfile.getline(charline,200);
+155   str=charline;
+156   } while( str.find("$START") == -1 );
+157 
+158   do {
+159     twissfile >> SMap.get_name() >> s >> SMap.get_L() >> 
+160                 tw.alpx >> tw.alpy >> tw.betx >> tw.bety >> tw.Dx; 
+161     SMap.get_twiss()=tw;
+162     line.push_back(SMap);
+163     //cout <<   SMap.get_name() << endl;
+164   } while( SMap.get_name().find("$END")== -1 ); 
+165 
+166   line.pop_back();
+167 
+168   twissfile.close();
+169 
+170 }
+\end{verbatim}\normalsize 
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Sector\-Map.h\item 
+Sector\-Map.cpp\end{CompactItemize}

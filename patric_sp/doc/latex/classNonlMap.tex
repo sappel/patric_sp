@@ -1,0 +1,77 @@
+\section{Nonl\-Map Class Reference}
+\label{classNonlMap}\index{NonlMap@{NonlMap}}
+Nonlinear maps/kicks. 
+
+
+{\tt \#include $<$Sector\-Map.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Nonl\-Map} (double kh, double kv, int n)\label{classNonlMap_a0}
+
+\item 
+void {\bf kick} (vektor \&R1, vektor \&R0)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Nonlinear maps/kicks.
+
+
+
+Definition at line 88 of file Sector\-Map.h.
+
+\subsection{Member Function Documentation}
+\index{kick@{kick}!NonlMap@{NonlMap}}\index{NonlMap@{NonlMap}!kick@{kick}}\index{NonlMap@{Nonl\-Map}!kick@{kick}}
+\index{kick@{kick}!NonlMap@{Nonl\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Nonl\-Map::kick (vektor \& {\em R1}, vektor \& {\em R0})}\label{classNonlMap_a1}
+
+
+(Nonlinear) kick element. Order=3: thin octupole with strength\_\-h=strength\_\-v Order=1: Chromatic correction kick for a focusing element with phase advance sigma and length l: strength=1/beta0$\ast$sigma$^\wedge$2/length
+
+thin octupole 
+
+Definition at line 267 of file Sector\-Map.cpp.
+
+Referenced by Pic::kick().
+
+
+
+\footnotesize\begin{verbatim}268 {
+270  if ( order==3 ) 
+271   {       
+272    R1[0]=R0[0];
+273    R1[1]=R0[1]-1.0/6.0*strength_h*(pow(R0[0],3)-3.0*R0[0]*pow(R0[2],2));
+274    R1[2]=R0[2];
+275    R1[3]=R0[3]+1.0/6.0*strength_h*(3.0*R0[2]*pow(R0[0],2)-pow(R0[2],3));
+276    R1[4]=R0[4];
+277    R1[5]=R0[5];
+278   }
+279  // ! chromatic correction  
+280  if ( order==1 )
+281   {      
+282    R1[0]=R0[0];
+283    R1[1]=R0[1]-strength_h*R0[5]*R0[0];
+284    R1[2]=R0[2];
+285    R1[3]=R0[3]-strength_v*R0[5]*R0[2];
+286    R1[4]=R0[4];
+287    R1[5]=R0[5];  
+288   }      
+289  else 
+290  {
+291    R1[0]=R0[0];
+292    R1[1]=R0[1];
+293    R1[2]=R0[2];
+294    R1[3]=R0[3];
+295    R1[4]=R0[4];
+296    R1[5]=R0[5];          
+297  }               
+298 }
+\end{verbatim}\normalsize 
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Sector\-Map.h\item 
+Sector\-Map.cpp\end{CompactItemize}

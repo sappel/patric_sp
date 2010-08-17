@@ -1,0 +1,170 @@
+\section{Sector\-Map Class Reference}
+\label{classSectorMap}\index{SectorMap@{SectorMap}}
+MAD-like Sectormap objects. 
+
+
+{\tt \#include $<$Sector\-Map.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Sector\-Map} ()\label{classSectorMap_a0}
+
+\begin{CompactList}\small\item\em construct empty map\item\end{CompactList}\item 
+{\bf Sector\-Map} (const Sector\-Map \&S)\label{classSectorMap_a1}
+
+\begin{CompactList}\small\item\em copy constructor\item\end{CompactList}\item 
+{\bf Sector\-Map} (double sigx, double sigy, double R, double length, double gamma0)
+\begin{CompactList}\small\item\em construct a simple continuous focusing element\item\end{CompactList}\item 
+Sector\-Map \& {\bf operator=} (const Sector\-Map \&M)\label{classSectorMap_a4}
+
+\item 
+Sector\-Map {\bf operator $\ast$} (const Sector\-Map \&M)\label{classSectorMap_a5}
+
+\begin{CompactList}\small\item\em multiply two maps\item\end{CompactList}\item 
+string \& {\bf get\_\-name} ()\label{classSectorMap_a6}
+
+\begin{CompactList}\small\item\em get or set element name\item\end{CompactList}\item 
+double \& {\bf get\_\-L} ()\label{classSectorMap_a7}
+
+\begin{CompactList}\small\item\em get or set element length\item\end{CompactList}\item 
+double \& {\bf get\_\-K} (int j)\label{classSectorMap_a8}
+
+\item 
+double \& {\bf get\_\-T} (int j, int i)\label{classSectorMap_a9}
+
+\begin{CompactList}\small\item\em get or set matrix elements\item\end{CompactList}\item 
+{\bf Twiss\-P} \& {\bf get\_\-twiss} ()\label{classSectorMap_a10}
+
+\item 
+double {\bf get\_\-betx} ()\label{classSectorMap_a11}
+
+\item 
+double {\bf get\_\-bety} ()\label{classSectorMap_a12}
+
+\item 
+Sector\-Map $\ast$ {\bf get\_\-map} ()\label{classSectorMap_a13}
+
+\begin{CompactList}\small\item\em return pointer to sectormap\item\end{CompactList}\item 
+void {\bf phase\_\-advance} (double \&sigx, double \&sigy)
+\begin{CompactList}\small\item\em calculates phase advances per element\item\end{CompactList}\item 
+void {\bf transport} (vektor \&R1, vektor \&R0)
+\begin{CompactList}\small\item\em transport particle coordinates through the sector\item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+MAD-like Sectormap objects.
+
+
+
+Definition at line 11 of file Sector\-Map.h.
+
+\subsection{Constructor \& Destructor Documentation}
+\index{SectorMap@{SectorMap}!SectorMap@{SectorMap}}\index{SectorMap@{SectorMap}!SectorMap@{SectorMap}}\index{SectorMap@{Sector\-Map}!SectorMap@{SectorMap}}
+\index{SectorMap@{SectorMap}!SectorMap@{Sector\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Sector\-Map::Sector\-Map (double {\em sigx}, double {\em sigy}, double {\em R}, double {\em length}, double {\em gamma0})}\label{classSectorMap_a2}
+
+
+construct a simple continuous focusing element
+
+Generates a linear transport map for a simple continous focusing element of length=length, bending radius R and phase advances [grad] sigma\_\-x and sigma\_\-y 
+
+Definition at line 20 of file Sector\-Map.cpp.
+
+References Twiss\-P::alpx, Twiss\-P::alpy, Twiss\-P::betx, Twiss\-P::bety, Twiss\-P::Dx, and get\_\-T().
+
+
+
+\footnotesize\begin{verbatim}21 {
+22  ElementName="CF";
+23  L=length;
+24  double beta0=sqrt((gamma0*gamma0-1.0)/(gamma0*gamma0));
+25  double eta0=pow(R*sigx/length,2)-1.0/pow(gamma0,2);
+26  for(int j=0; j<36; j++) T[j]=0.0; 
+27  for(int j=0; j<6; j++)  K[j]=0.0; 
+28  get_T(0,0)=cos(sigx);
+29  get_T(0,1)=length/sigx*sin(sigx);
+30  if (R>0.0)
+31   get_T(0,5)=length*length/(sigx*sigx*R)*(1.0-cos(sigx))/beta0;
+32  else
+33   get_T(0,5)=0.0; 
+34  get_T(1,0)=-sigx/length*sin(sigx);
+35  get_T(1,1)=cos(sigx);
+36  if (R>0.0)
+37   get_T(1,5)=length/(sigx*R)*sin(sigx)/beta0;
+38  else
+39   get_T(1,5)=0.0;
+40  get_T(2,2)=cos(sigy);
+41  get_T(2,3)=length/sigy*sin(sigy);
+42  get_T(3,2)=-sigy/length*sin(sigy);
+43  get_T(3,3)=cos(sigy);
+44  get_T(4,4)=1.0;
+45  get_T(4,5)=-eta0*length/(beta0*beta0);
+46  get_T(5,5)=1.0;
+47  twiss.betx=length/sigx;
+48  twiss.bety=length/sigy;
+49  twiss.alpx=0.0;
+50  twiss.alpy=0.0;
+51  if( R > 0.0)
+52   twiss.Dx=pow(length/sigx,2)/R;
+53  else
+54   twiss.Dx=0.0; 
+55 }
+\end{verbatim}\normalsize 
+
+
+\subsection{Member Function Documentation}
+\index{phase_advance@{phase\_\-advance}!SectorMap@{SectorMap}}\index{SectorMap@{SectorMap}!phase_advance@{phase\_\-advance}}\index{SectorMap@{Sector\-Map}!phase_advance@{phase\_\-advance}}
+\index{phase_advance@{phase\_\-advance}!SectorMap@{Sector\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Sector\-Map::phase\_\-advance (double \& {\em sigx}, double \& {\em sigy})}\label{classSectorMap_a14}
+
+
+calculates phase advances per element
+
+Calculates the phase advances per element. 
+
+Definition at line 107 of file Sector\-Map.cpp.
+
+References get\_\-T().
+
+
+
+\footnotesize\begin{verbatim}108 {
+109  double ah=get_T(0,0);
+110  double dh=get_T(1,1); 
+111  double av=get_T(2,2);  
+112  double dv=get_T(3,3);
+113  sigx=acos(0.5*(ah+dh));
+114  sigy=acos(0.5*(av+dv));
+115 }
+\end{verbatim}\normalsize 
+\index{transport@{transport}!SectorMap@{SectorMap}}\index{SectorMap@{SectorMap}!transport@{transport}}\index{SectorMap@{Sector\-Map}!transport@{transport}}
+\index{transport@{transport}!SectorMap@{Sector\-Map}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Sector\-Map::transport (vektor \& {\em R1}, vektor \& {\em R0})}\label{classSectorMap_a15}
+
+
+transport particle coordinates through the sector
+
+Detailed description 
+
+Definition at line 91 of file Sector\-Map.cpp.
+
+Referenced by Pic::transport().
+
+
+
+\footnotesize\begin{verbatim}92 {
+93  for(int j=0;j<6;j++)
+94    {
+95     R1[j]=0.0;
+96     for(int l=0;l<6;l++)
+97      R1[j]+=T[j*6+l]*R0[l];             
+98    }
+99 }
+\end{verbatim}\normalsize 
+
+
+The documentation for this class was generated from the following files:\begin{CompactItemize}
+\item 
+Sector\-Map.h\item 
+Sector\-Map.cpp\end{CompactItemize}
