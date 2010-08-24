@@ -6,7 +6,7 @@ return, dQm
 end
 
 pro emittance, data_dir
-target_dir = "../../inj_sim/"
+target_dir = "../../sim_inj/"
 data_dir = target_dir + data_dir
 
 !P.MULTI=[0,1,2]

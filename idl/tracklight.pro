@@ -1,5 +1,5 @@
 pro tracklight, data_dir
-data_dir = "../../inj_sim/" + data_dir
+data_dir = "../../sim_inj/" + data_dir
 
 !P.MULTI=[0,2,2]
 !P.CHARSIZE=1.6
@@ -20,7 +20,7 @@ ymax=0.04                       ; y max (m)
 ds=0.4                          ; determines xsmax and ysmax
 smoothing=2                     ; contour smoothing
 clevels=40                      ; contour levels
-outpath = data_dir+"movie/" ; directory to write movie into
+outpath = data_dir ; directory to write figures into
 
 set_plot,"x"
 device,decomposed=0

@@ -28,6 +28,8 @@ int NZ_bunch = NZ/2;  //!< number of slices along the bunch for 2.5D space charg
 //@{
 double piperadius;  //!< radius of the pipe [m]
 double coll_halfgap;  //!< half gap width of collimator [m]
+double image_x;  //!< horizontal boundary for Green's function; 0 means open
+double image_y;  //!< vertical boundary for Green's function; 0 means open
 double circum;  //!< ring circumference [m]
 double gamma_t;  //!< gamma transition
 double CF_advance_h, CF_advance_v;  //!< const. focusing phase advance per cell [rad] (madx_input_file = 0)
@@ -121,7 +123,6 @@ void input_from_file(string filename, int id){
   FILE *cfg_file_ptr;
   long i, condition;
   string cfg_filename = filename + ".cfg";
-
   cfg_file_ptr = fopen (cfg_filename.c_str(), "r");
   if(cfg_file_ptr == NULL){
     printf("\n\n    Configuration-file does not exist.\n");
@@ -155,6 +156,10 @@ void input_from_file(string filename, int id){
   fscanf(cfg_file_ptr, "%lf", &piperadius);
   fscanf(cfg_file_ptr, "%s", dummy_string);
   fscanf(cfg_file_ptr, "%lf", &coll_halfgap);  // introduced by SP
+  fscanf(cfg_file_ptr, "%s", dummy_string);
+  fscanf(cfg_file_ptr, "%lf", &image_x);  // introduced by SP
+  fscanf(cfg_file_ptr, "%s", dummy_string);
+  fscanf(cfg_file_ptr, "%lf", &image_y);  // introduced by SP
   fscanf(cfg_file_ptr, "%s", dummy_string);
   fscanf(cfg_file_ptr, "%lf", &circum);
   fscanf(cfg_file_ptr, "%s", dummy_string);
@@ -284,7 +289,7 @@ void print_IDL(string data_dir, int numprocs, double cell_length, int Nelements)
 
 int gdbflag;
 void waitforgdb(int myid){
-  //myid=0;  // catch all processes to let the 0th crash before the others; exection won't finish
+  //myid=0;  // catch all processes to let the 0th crash before the others; execution won't finish
   if(myid == 0){
     printf("PID %d ready for attaching.\n", getpid());
     fflush(stdout);
@@ -299,6 +304,7 @@ void waitforgdb(int myid){
 // main part of the Simulation:
 
 main(int argc, char* argv[]){
+  time_t time1 = time(0), time2;
 
   //-------MPI initialzation-------------
 
@@ -423,15 +429,6 @@ main(int argc, char* argv[]){
     }
   }
 
-  if(myid == 0)
-    cout << "Expected single beamlett tune shifts: dQ_x="
-	 << rp*SP.Z*current*circum / (4*PI*clight*qe*SP.A*pow(SP.beta0*SP.gamma0, 3)*
-				      (eps_x+sqrt(eps_x*eps_y*tunex/tuney)))*1e6
-	 << ", dQ_y="
-	 << rp*SP.Z*current*circum / (4.*PI*clight*qe*SP.A*pow(SP.beta0*SP.gamma0, 3)*
-				      (eps_y+sqrt(eps_x*eps_y*tuney/tunex)))*1e6
-	 << endl;
-
   // Chromatic correction kick:
   Chrom Chrom0(tunex, tuney, circum/(2.0*PI));
 
@@ -512,7 +509,7 @@ main(int argc, char* argv[]){
 
   // Init 2D Greens function for poisson solver
 
-  Greenfb gf1(rho_xy, 0.0*piperadius, 0.0);  // open boundary condition
+  Greenfb gf1(rho_xy, image_x, image_y);  // open boundary condition
 
 
   // set longitudinal distribution:
@@ -589,6 +586,15 @@ main(int argc, char* argv[]){
     MPI_Abort(MPI_COMM_WORLD, 0);
   }
 
+  if(myid == 0)
+    cout << "Expected single beamlett tune shifts: dQ_x="
+	 << rp*SP.Z*current*circum / (rmsToFull*PI*clight*qe*SP.A*pow(SP.beta0*SP.gamma0, 3)*
+				      (eps_x+sqrt(eps_x*eps_y*tunex/tuney)))*1e6
+	 << ", dQ_y="
+	 << rp*SP.Z*current*circum / (rmsToFull*PI*clight*qe*SP.A*pow(SP.beta0*SP.gamma0, 3)*
+				      (eps_y+sqrt(eps_x*eps_y*tuney/tunex)))*1e6
+	 << endl;
+
 
   // local orbit bump for beam injection; SP
   Bump lob(&lattice, eps_x, rmsToFull, momentum_spread, tunex, offcenter,
@@ -647,7 +653,6 @@ main(int argc, char* argv[]){
 
   //---------end-parameters for particle exchange---------------
 
-
   long *septLoss = new long;
   long *sl_slice = new long;
   double *momenta = new double[17];
@@ -657,9 +662,9 @@ main(int argc, char* argv[]){
   //-----------start loop (do...while)-------------------------
   //-----------------------------------------------------------
 
-  do{
+  do{  // injection; SP
     if(!(counter%Nelements)){  // at beginning each turn...
-      if(inj_counter < max_inj){  // ... inject beamlett if apropriate ...
+      if(inj_counter < max_inj){  // ... inject beamlett (if apropriate) ...
 	(NewPics.*long_dist)(d1, d2, momentum_spread, NPIC, &dl, i1);
 	(NewPics.*trans_dist)(1.e-6*eps_x, 1.0e-6*eps_y, twiss_TK.alpx, twiss_TK.alpy,
 			      pow(mismatch_x, 2)*twiss_TK.betx, pow(mismatch_y, 2)*twiss_TK.bety,
@@ -808,10 +813,9 @@ main(int argc, char* argv[]){
 
     ds = lattice.get_element()->get_L();
     s += ds;
-    if(lattice.get_element()->get_name() == "\"SEPTUM\"")
-      Pics.transport(lattice.get_element()->get_map(), coll_halfgap);
-    else
-      Pics.transport(lattice.get_element()->get_map(), piperadius);
+    if(lattice.get_element()->get_name() == "\"SEPTUM\"")  // losses at septum; SP
+      Pics.localLoss_x(-piperadius, coll_halfgap);
+    Pics.transport(lattice.get_element()->get_map(), piperadius);
 
     //-----exchange particles between slices------------------------
 
@@ -1073,4 +1077,13 @@ main(int argc, char* argv[]){
   // MPI end:
 
   MPI_Finalize();
+
+  time2 = time(0);
+  double sec = difftime(time2, time1);
+  double h = floor(sec/3600);
+  double min = floor(sec/60-60.*h);
+  sec -= 3600.*h+60.*min;
+  if(myid == 0)
+    cout<<"Total losses: "<<(1-Ntot/(max_inj*NPIC))*100.<<" \%\n"
+    <<"Computation time: "<<h<<":"<<min<<":"<<sec<<endl;
 }

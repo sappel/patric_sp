@@ -145,7 +145,7 @@ class Pic{
  
   //! particle transport using sector map
   void transport(SectorMap* M, double boundary);
-  long localLoss_x(double rBound, double lBound);
+  long localLoss_x(double loBound, double upBound);
   //! space charge kick
   void kick(Grid2D& Ex, Grid2D& Ey, double ds);
   void kick(Grid3D& Ex, Grid3D& Ey, double ds);

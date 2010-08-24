@@ -348,10 +348,10 @@ void Pic::transport(SectorMap* M, double boundary){
   }
 }
 
-long Pic::localLoss_x(double rBound, double lBound){
+long Pic::localLoss_x(double loBound, double upBound){
   long lolo = 0;
   for(long j=0; j<pics.size(); ++j){
-    if(pics[j].x <= rBound || pics[j].x >= lBound){
+    if(pics[j].x <= loBound || pics[j].x >= upBound){
       pics.erase(pics.begin()+j);
       ++lolo;
     }

@@ -112,14 +112,6 @@ void SectorMap::phase_advance(double& sigx, double& sigy){
   dir directory. Sets the iterator to the first element.
 */
 
-#if 0
-BeamLine::BeamLine(string dir){
-  read_madx_twiss(dir + "twiss.txt");  // '/' removed, '.txt' added; SP
-  read_madx_sectormap(dir + "sectormap.txt");  // '/' removed; SP
-  element = line.begin();
-}
-#endif
-
 void BeamLine::init(string dir, double &length, double &Q_hor, double &Q_ver, double beta){
   read_madx_twiss(dir + "twiss_inj.txt", length, Q_hor, Q_ver, beta);
   read_madx_sectormap(dir + "sectormap_inj.txt");
