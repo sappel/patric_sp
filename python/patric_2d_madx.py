@@ -8,9 +8,9 @@ from odict import *
 from socket import gethostname
 import os
 
-subdir = "/run0"  # subdirectory
+subdir = "/run0"  # subdirectory for output
 path='/d/bhs01/sparet/patric_sp/sim_inj'  # path for output
-expath='/d/bhs01/sparet/patric_sp/trunk'
+expath='/d/bhs01/sparet/patric_sp/trunk'  # base directory of code
 runid=1            # run identification number (only out.dat)
 
 #-----MPI options------------------
