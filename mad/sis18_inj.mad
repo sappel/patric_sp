@@ -99,7 +99,7 @@ beam;
 USE, sequence=sis18;
 
 match, sequence=sis18;
-global, sequence=sis18, Q1=4.19, Q2=3.29;
+global, sequence=sis18, Q1=4.17, Q2=3.35;
 //constraint, sequence=sis18, range=#e, MUX=4.19;
 //constraint, sequence=sis18, range=#e, MUY=3.29;
 vary, name=QS1F->K1, step=1.e-4;

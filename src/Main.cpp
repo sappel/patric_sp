@@ -294,7 +294,7 @@ void waitforgdb(int myid){
     printf("PID %d ready for attaching.\n", getpid());
     fflush(stdout);
     sync();
-    gdbflag = 1;
+    gdbflag = 1;  // 0: activated, else: deactivated
     while(0 == gdbflag)
       sleep(1);
   }
@@ -677,7 +677,7 @@ main(int argc, char* argv[]){
 	N_inj += NPIC;
 	if(myid == 0)
 	  cout<<"The incoming beamlett number "<<inj_counter<< " lost "<<*septLoss<<
-	    " particles in the septum.\n";
+	    " macro particles on the septum.\n";
       }
       lob.decrement();  // ... reduce height of orbit bump
     }
@@ -714,7 +714,7 @@ main(int argc, char* argv[]){
       // stop when loss tolerance level is exceeded
       if(myid == 0 && Ntot/N_inj <= lossTol){  // test on numer of injected particles; SP
 	cout<<"Loss tolerance exceeded within "<<counter/Nelements+1<<" turns ("<<
-	  Ntot<<" of "<<N_inj<<" left). Exiting.\n";
+	  Ntot<<" of "<<N_inj<<" macro particles left). Exiting.\n";
 	cout<<"Element: "<<lattice.get_element()->get_name()<<" at "<<s<<endl;
 	cout.flush();
 	MPI_Abort(MPI_COMM_WORLD, 0);
@@ -1084,6 +1084,7 @@ main(int argc, char* argv[]){
   double min = floor(sec/60-60.*h);
   sec -= 3600.*h+60.*min;
   if(myid == 0)
-    cout<<"Total losses: "<<(1-Ntot/(max_inj*NPIC))*100.<<" \%\n"
-    <<"Computation time: "<<h<<":"<<min<<":"<<sec<<endl;
+    cout << "Total losses: " << (1-Ntot/(max_inj*NPIC))*100. << " \%\n" <<
+      "Stored particles: " << current*circum*Ntot/(qe*Z*SP.beta0*clight*NPIC) << endl <<
+      "Computation time: " << h << ":" << min << ":" << sec << endl;
 }

@@ -91,13 +91,15 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
   double ab = (2.*a+d_septum)/((m-1)*cOpt+cm-m*c1);
   const double amp0 = offset - (m-1)*ab*cOpt;  // initial bump height
   // ramp decrement per revolution
-  const double delAmp = (cm-c1)*ab;
+  const double delAmp = (amp0-2*a)/double(max_inj);
   // slope of bumped orbit at injection
   const double ampp0 = inj_angle + (m-1)*ab/beta_I*(alpha_I*cOpt+sin(inj_phase));
+#if 0
   // number of possible injections
   int n_inj = int( (amp0-2.*a)/delAmp );
   if(n_inj < max_inj)
     max_inj = n_inj;
+#endif
 
   // calculate deflection angles for local orbit bump adjusted to incoming beam
   double b_21 = sqrt(beta[3]*beta[2])*sin(psi[3]-psi[2]);
@@ -119,9 +121,9 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
   if(id == 0){
     cout<<"Injection parameters:"<<
       "a/m="<< a <<", offset/m=" << offset <<", amp0/m=" << amp0 << ", delAmp/m=" << delAmp <<
-      ", ampp0= " << ampp0<< ", Q_x=" << Q_x << ", n_inj=" << n_inj << endl <<
-      "beta_I/m=" << beta_I << ", alpha_I=" << alpha_I << endl <<
-      "Deflection angles/(mm mrad): ";
+      ", ampp0= " << ampp0<< ", Q_x=" << Q_x << ", max_inj=" << max_inj << endl;
+    //cout << "beta_I/m=" << beta_I << ", alpha_I=" << alpha_I << endl;
+    cout << "Deflection angles/(mm mrad): ";
     for(short i=0; i<4; ++i)
       cout << defl[i]*1000. << ", ";
     cout << endl;
@@ -132,7 +134,7 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
 	MPI_Abort(MPI_COMM_WORLD, 0);
       }
     }
-    if(n_inj<1){
+    if(max_inj<1){
       cout<<"Error: Beam too large for injection. Execution aborted.\n";
       cout.flush();
       MPI_Abort(MPI_COMM_WORLD, 0);
