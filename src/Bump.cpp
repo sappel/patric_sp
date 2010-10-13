@@ -22,12 +22,12 @@ typedef vector<double> vektor;
 Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x,
 	   double &offset, double x_septum, double inj_angle, unsigned &max_inj,
 	   double inj_phase, unsigned sept_return, int id){
+  double d_septum = 0.0001;  // septum thickness
   list<SectorMap>::iterator el = bl->get_first_element();
   const list<SectorMap>::iterator ending = bl->get_end_element();
 
   // adjust injection settings to beam parameters
   double a = sqrt(el->get_betx()*emit_x*rmsToFull)*0.001+el->get_twiss().Dx*dp0;  // half width of injected beam [m] with WB distribution
-  double d_septum = 0.;  // septum thickness; maybe included later
   offset += x_septum + d_septum + a;  // offset relative to beam center -> w.r.t. nominal orbit
 
   // find injection point, injection kickers and their lattice functions
@@ -82,24 +82,10 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
     MPI_Abort(MPI_COMM_WORLD, 0);
   }
 
-  // determine bump parameters [see notes p. 136ff for details]
-  const double m = double(sept_return);  // turn of return to septum
-  const double cOpt = cos(inj_phase);
-  const double c1 = cos(inj_phase+2.*PI*Q_x);
-  const double cm = cos(inj_phase+2.*m*PI*Q_x);
-  // abbrev. for g/e_m
-  double ab = (2.*a+d_septum)/((m-1)*cOpt+cm-m*c1);
-  const double amp0 = offset - (m-1)*ab*cOpt;  // initial bump height
-  // ramp decrement per revolution
+  // The bump height is defined by user given offcenter parameter. The injection angle is equal to the septum tilt angle (as done in SIS18).
+  const double amp0 = offset;
+  const double ampp0 = inj_angle;
   const double delAmp = (amp0-2*a)/double(max_inj);
-  // slope of bumped orbit at injection
-  const double ampp0 = inj_angle + (m-1)*ab/beta_I*(alpha_I*cOpt+sin(inj_phase));
-#if 0
-  // number of possible injections
-  int n_inj = int( (amp0-2.*a)/delAmp );
-  if(n_inj < max_inj)
-    max_inj = n_inj;
-#endif
 
   // calculate deflection angles for local orbit bump adjusted to incoming beam
   double b_21 = sqrt(beta[3]*beta[2])*sin(psi[3]-psi[2]);
@@ -128,12 +114,9 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
       cout << defl[i]*1000. << ", ";
     cout << endl;
     for(short i=0; i<4; ++i){  // check against maximal deflection
-      if(defl[i] > 0.0084){
+      if(defl[i] > 0.0084)
 	cout << "WARNING: Required deflection angle in kicker " << i
 	     << " exceeds limit of 8.4 mrad.\n";
-	// Execution aborted.\n";
-	//MPI_Abort(MPI_COMM_WORLD, 0);
-      }
     }
     if(max_inj<1){
       cout<<"Error: Beam too large for injection. Execution aborted.\n";
@@ -142,7 +125,7 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
     }
   }
 
-  ab = delAmp/amp0;  // relative decrement
+  double ab = delAmp/amp0;  // relative decrement
   for(short i=0; i<4; ++i){
     decr[i] = ab*defl[i];  // set reduction per revolution
     kickers[i]->get_K(1) = defl[i];  // set deflection angle
