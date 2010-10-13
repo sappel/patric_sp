@@ -255,23 +255,21 @@ void Pic::KV_xy(double emittance_x, double emittance_y, double alpha_x, double a
 void Pic::SG(double emittance_x, double emittance_y, double alpha_x,
 	     double alpha_y, double beta_x, double beta_y, double D0,
 	     double Ds0, double centering, double inj_angle, long *d){
-  emittance_x *= 4.;
-  emittance_y *= 4.;
   long j;
   double u, v, w, s, rx, ry;
 
-  double xsmax = sqrt(emittance_x*(1.0+pow(alpha_x, 2))/beta_x);
-  double ysmax = sqrt(emittance_y*(1.0+pow(alpha_y, 2))/beta_y);
-  double xsrms = 0.5*xsmax;
-  double ysrms = 0.5*ysmax;
+  double xsrms = sqrt(emittance_x*(1.0+pow(alpha_x, 2))/beta_x);
+  double ysrms = sqrt(emittance_y*(1.0+pow(alpha_y, 2))/beta_y);
+  double xmax = 4.*emittance_x*beta_x;
+  double ymax = 4.*emittance_y*beta_y;
 
   for(j=0; j<pics.size(); ++j){
     u = ran1(d);
     v = ran1(d);
     w = ran1(d);
 
-    rx = sqrt(u*emittance_x*beta_x);
-    ry = sqrt(u*emittance_y*beta_y);
+    rx = sqrt(u*xmax);
+    ry = sqrt(u*ymax);
     pics[j].x = rx * cos(2.0*PI*v) + D0*pics[j].dp + centering;
     pics[j].y = ry * sin(2.0*PI*v);
 

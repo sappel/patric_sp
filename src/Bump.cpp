@@ -128,10 +128,11 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
       cout << defl[i]*1000. << ", ";
     cout << endl;
     for(short i=0; i<4; ++i){  // check against maximal deflection
-      if(defl[i] > 0.006){
-	cout << "Required deflection angle in kicker " << i
-	     << " exceeds limit of 6 mrad. Execution aborted.\n";
-	MPI_Abort(MPI_COMM_WORLD, 0);
+      if(defl[i] > 0.0084){
+	cout << "WARNING: Required deflection angle in kicker " << i
+	     << " exceeds limit of 8.4 mrad.\n";
+	// Execution aborted.\n";
+	//MPI_Abort(MPI_COMM_WORLD, 0);
       }
     }
     if(max_inj<1){

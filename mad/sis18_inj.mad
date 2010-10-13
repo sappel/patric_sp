@@ -9,6 +9,7 @@ TITLE, " -- SIS -- :  bend. quad. sex.  with correction to fringe with kickers f
 option, -echo;
 
 beam, particle=U, mass=238, charge=28, gamma=1.012;
+Q_hor = 4.48;
 
 !---------------------  DRIFT SPACES DEFINITION  ---------------------
 DR1: DRIFT, L=0.6450000;
@@ -26,8 +27,9 @@ DR3b: DRIFT, L=1.54; ! till next quadrupole in S01 and S03
 DR3c: DRIFT, L=5.86; ! till bumper S11
 DR3d: DRIFT, L=0.98; ! till next quadrupole in S11
 DR3e: DRIFT, L=1.00; ! till bumper in S12
-DR3f: DRIFT, L=4.96; ! from bumper to injection point
-DR3g: DRIFT, L=0.88; ! injection point to next quadrupole in S12
+DR3f: DRIFT, L=4.46; ! from bumper to beginning of septum
+DR3g: DRIFT, L=0.50; ! length of septum
+DR3h: DRIFT, L=0.88; ! injection point to next quadrupole in S12
 
 !---------------------------------------------------------------------
 
@@ -64,7 +66,7 @@ S12MB2: HKICKER, L=0, KICK=0;
 !S11MB1: HKICKER, L=0, KICK=5.28e-3;
 !S12MB2: HKICKER, L=0, KICK=5.40e-3;
 INJ: MARKER;  // for injection point; redundant if always at beginning
-SEPTUM: MARKER;  // marker for collimator
+SEPTUM: MARKER;  // marker for septum
 
 ! ---------------------------  LINE DEFINITION --------------------------
 ! Sections without injection devices
@@ -72,7 +74,7 @@ CELLA: LINE=(DR1, RB, DR2, RB, DR3, QS1F, DR4, QS2D, DR5, QS3T, DR6);
 
 ! SIS-18 starting at injection point
 ! S12 from injection point till S01
-SEC12b: LINE=(INJ, DR3g, QS1F, DR4, QS2D, DR5, QS3T, DR6);
+SEC12b: LINE=(INJ, DR3h, QS1F, DR4, QS2D, DR5, QS3T, DR6);
 
 ! S01
 SEC1: LINE=(DR1, RB, DR2, RB, DR3a, S01MB3, DR3b, QS1F, DR4, QS2D, DR5, QS3T, DR6);
@@ -84,7 +86,7 @@ SEC3: LINE=(DR1, RB, DR2, RB, DR3a, S03MB4, DR3b, QS1F, DR4, QS2D, DR5, QS3T, DR
 SEC11: LINE=(DR1, RB, DR2, RB, DR3c, S11MB1, DR3d, QS1F, DR4, QS2D, DR5, QS3T, DR6);
 
 ! S12a from beginning till injection point
-SEC12a: LINE=(DR1, RB, DR2, RB, DR3e, S12MB2, DR3f, SEPTUM);
+SEC12a: LINE=(DR1, RB, DR2, RB, DR3e, S12MB2, DR3f, DR3g, SEPTUM);
 
 SEC12: LINE=(DR1, RB, DR2, RB, DR3e, S12MB2, DR3f, INJ, DR3g, QS1F, DR4, QS2D, DR5, QS3T, DR6);
 
@@ -99,7 +101,7 @@ beam;
 USE, sequence=sis18;
 
 match, sequence=sis18;
-global, sequence=sis18, Q1=4.17, Q2=3.35;
+global, sequence=sis18, Q1=Q_hor, Q2=3.35;
 //constraint, sequence=sis18, range=#e, MUX=4.19;
 //constraint, sequence=sis18, range=#e, MUY=3.29;
 vary, name=QS1F->K1, step=1.e-4;

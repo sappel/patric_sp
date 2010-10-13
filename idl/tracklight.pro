@@ -85,7 +85,7 @@ I0=current
 pi=3.14159265359
 clight=2.99e8
 gamma0 = 1.0 + (e_kin*1e6*qe)/(mp*clight*clight) 
-beta0  = sqrt((gamma0*gamma0-1.0)/(gamma0*gamma0))   
+beta0  = sqrt(1-1.0/(gamma0*gamma0))   
 
 ; Grids:
 
@@ -288,7 +288,7 @@ endif
 
 for j=0,num_p-1 do BEGIN
   !p.title=strcompress("time = " + $
-                       string(format='(F6.3)', 1e6*j*cell_length*print_cell/(beta0*clight)) $
+                       string(format='(F7.3)', 1e6*j*cell_length*print_cell/(beta0*clight)) $
                        + " us")
 
 ; print eps':
@@ -418,7 +418,7 @@ for j=0,num_p-1 do BEGIN
   IF (rhoxxs EQ 1) then begin
     plot,pics(j,0,0:numprocs*Np-1)*100,pics(j,1,0:numprocs*Np-1)*1000.0,$
          /xstyle,/ystyle,psym=3,symsize=0.1,xrange=[-pipe_radius*100,pipe_radius*100],$
-         yrange=[-xsmax,xsmax],xtitle="x [cm]",ytitle="x' [mrad]"
+         yrange=[-xsmax,xsmax],xtitle="x [cm]",ytitle="x' [mrad]", ytickinterval=4
     arr=fltarr(NX,NX)
     arr(*,*)=rho_xxs(j,*,*)
     rho_xxs(j,*,*)=smooth(arr,smoothing,/edge_truncate)
