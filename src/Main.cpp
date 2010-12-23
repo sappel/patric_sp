@@ -185,11 +185,11 @@ void input_from_file(string filename, int id){
   fscanf(cfg_file_ptr, "%s", dummy_string);
   fscanf(cfg_file_ptr, "%lf", &dqy_detune);
   fscanf(cfg_file_ptr, "%s", dummy_string);
-  fscanf(cfg_file_ptr, "%d", &pic_subset) ;
+  fscanf(cfg_file_ptr, "%d", &pic_subset);
   fscanf(cfg_file_ptr, "%s", dummy_string);
   fscanf(cfg_file_ptr, "%d", &init_pic_xy);
   fscanf(cfg_file_ptr, "%s", dummy_string);  	
-  fscanf(cfg_file_ptr, "%d", &init_pic_z) ;
+  fscanf(cfg_file_ptr, "%d", &init_pic_z);
   fscanf(cfg_file_ptr, "%s", dummy_string);
   fscanf(cfg_file_ptr, "%lf", &momentum_spread);
   fscanf(cfg_file_ptr, "%s", dummy_string);
@@ -289,13 +289,13 @@ void print_IDL(string data_dir, int numprocs, double cell_length, int Nelements)
 
 int gdbflag;
 void waitforgdb(int myid){
-  //myid=0;  // catch all processes to let the 0th crash before the others; execution won't finish
+  //myid=1;  // catch all processes to let the 0th crash before the others; execution won't finish
   if(myid == 0){
     printf("PID %d ready for attaching.\n", getpid());
     fflush(stdout);
     sync();
-    gdbflag = 1;  // 0: activated, else: deactivated
-    while(0 == gdbflag)
+    gdbflag = 1;  // 1: activated, else: deactivated
+    while(1 == gdbflag)
       sleep(1);
   }
 }
@@ -358,7 +358,7 @@ main(int argc, char* argv[]){
   double tunex, tuney;
   if(madx_input_file == 1)
     // read madx sectormap and twiss files
-    lattice.init("../mad/", circum, tunex, tuney, SP.beta0);
+    lattice.init("../mad/", circum, tunex, tuney, SP.beta0, chroma);
   else{
     // init constant focusing (CF) sectormap and cell:
     SectorMap CF(CF_advance_h/NCF, CF_advance_v/NCF, CF_R, CF_length/NCF, SP.gamma0);
@@ -430,7 +430,7 @@ main(int argc, char* argv[]){
   }
 
   // Chromatic correction kick:
-  Chrom Chrom0(tunex, tuney, circum/(2.0*PI));
+  //  Chrom Chrom0(tunex, tuney, circum/(2.0*PI));
 
   // Octupole:
   Octupole Oct0(koct);
@@ -651,16 +651,16 @@ main(int argc, char* argv[]){
       }
   }
 
-  //---------end-parameters for particle exchange---------------
+  //--------------------- end-parameters for particle exchange ---------------
 
   long *septLoss = new long;
   long *sl_slice = new long;
   double *momenta = new double[17];
   double *momenta_tot = new double[17];
 
-  //-----------------------------------------------------------
-  //-----------start loop (do...while)-------------------------
-  //-----------------------------------------------------------
+  //--------------------------------------------------------------------------
+  //----------------------- start loop (do...while) --------------------------
+  //--------------------------------------------------------------------------
 
   do{  // injection; SP
     if(!(counter%Nelements)){  // at beginning each turn...
@@ -671,6 +671,7 @@ main(int argc, char* argv[]){
 			      twiss_TK.Dx, Ds0, offcenter, inj_angle, &d);
 	*sl_slice = NewPics.localLoss_x(x_septum, 100.);  // loss on septum
 	MPI_Reduce(sl_slice, septLoss, 1, MPI_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
+
 	++inj_counter;
 	Pics.add_particles(*NewPics.get_particles());
 	NewPics.clear_particles();
@@ -715,11 +716,10 @@ main(int argc, char* argv[]){
       if(myid == 0 && Ntot/N_inj <= lossTol){  // test on numer of injected particles; SP
 	cout<<"Loss tolerance exceeded within "<<counter/Nelements+1<<" turns ("<<
 	  Ntot<<" of "<<N_inj<<" macro particles left). Exiting.\n";
-	cout<<"Element: "<<lattice.get_element()->get_name()<<" at "<<s<<endl;
 	cout.flush();
 	MPI_Abort(MPI_COMM_WORLD, 0);
       }
-
+      //      cout<<counter<<' '<<lattice.get_element()->get_name()<<' '<<lattice.get_element()->get_K(1)<<endl;  //tmp
       // write momenta
       if(myid == 0){
 	fprintf(out, "%g", s);
@@ -815,7 +815,10 @@ main(int argc, char* argv[]){
     s += ds;
     if(lattice.get_element()->get_name() == "\"SEPTUM\"")  // losses at septum; SP
       Pics.localLoss_x(-piperadius, coll_halfgap);
-    Pics.transport(lattice.get_element()->get_map(), piperadius);
+
+    double xi_h = lattice.get_element()->get_twiss().xix;
+    double xi_v = lattice.get_element()->get_twiss().xiy;
+    Pics.transport(lattice.get_element()->get_map(), xi_h, xi_v, piperadius);
 
     //-----exchange particles between slices------------------------
 
@@ -879,8 +882,8 @@ main(int argc, char* argv[]){
     //Pics.kick(Amp0, ds);
 
     // correct for chromaticity
-    if(chroma == 1)
-      Pics.kick(Chrom0, ds);
+    //    if(chroma == 1)  // chromaticity for CF disabled; SP
+    //      Pics.kick(Chrom0, ds);
 
     // cavity kick every cell:
 

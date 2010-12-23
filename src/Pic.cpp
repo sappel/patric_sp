@@ -320,7 +320,7 @@ void Pic::Gauss_xy(double emittance_x, double emittance_y, double alpha_x,
 
 // ---------------------- Teilchenbewegung ---------------------------
 
-void Pic::transport(SectorMap* M, double boundary){
+void Pic::transport(SectorMap* M, double K_xix, double K_xiy, double boundary){
   vektor R0(6), R1(6);
 
   for(long j=0; j<pics.size(); ++j){
@@ -332,7 +332,7 @@ void Pic::transport(SectorMap* M, double boundary){
     R0[3] = pics[j].ys;
     R0[4] = pics[j].z/SP->beta0;
     R0[5] = SP->beta0*pics[j].dp;
-    M->transport(R1, R0);
+    M->transport(R1, R0, K_xix, K_xiy);  // why function call instead of in place evaluation (->efficiency)?; SP
     pics[j].x = R1[0];
     pics[j].xs = R1[1];
     pics[j].y = R1[2];
@@ -776,7 +776,7 @@ void Pic::print(int subset){
   }
   float *tem = new float[8];
   for(j=0; j<subset; ++j){
-    jran = (int)(ran1(&d)*(np-2.0));
+    jran = (int)(ran1(&d)*(np-2.0));  // why -2 instead of -1?; SP
     tem[0] = pics[jran].x;
     tem[1] = pics[jran].xs;
     tem[2] = pics[jran].y;

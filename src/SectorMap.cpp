@@ -71,9 +71,9 @@ SectorMap& SectorMap::operator = (const SectorMap& M){
 
 SectorMap SectorMap::operator*(const SectorMap& M){
   SectorMap tmap;
-  for(int i=0; i<6; i++)
-    for(int j=0; j<6; j++)
-      for(int l=0; l<6; l++)
+  for(int i=0; i<6; ++i)
+    for(int j=0; j<6; ++j)
+      for(int l=0; l<6; ++l)
 	tmap.T[j*6+i] += T[j*6+l]*M.T[l*6+i];
   tmap.L = L+M.L;
   return tmap;
@@ -84,12 +84,14 @@ SectorMap SectorMap::operator*(const SectorMap& M){
 Detailed description
 */
 
-void SectorMap::transport(vektor& R1, vektor& R0){
-  for(int j=0; j<6; j++){
-    R1[j] = K[j];  // was 0.0, K[j] added for bumper kicks; SP
-    for(int l=0; l<6; l++)
+void SectorMap::transport(vektor& R1, vektor& R0, double K_xix, double K_xiy){
+  for(int j=0; j<6; ++j){
+    R1[j] = K[j];  // was 0.0, K[j] inserted for bumper kicks; SP
+    for(int l=0; l<6; ++l)
       R1[j] += T[j*6+l]*R0[l];
   }
+  R1[1] += K_xix*R0[0]*R0[5];  // chromaticity kick; SP
+  R1[3] += K_xiy*R0[2]*R0[5];  // chromaticity kick; SP
 }
 
 
@@ -112,8 +114,8 @@ void SectorMap::phase_advance(double& sigx, double& sigy){
   dir directory. Sets the iterator to the first element.
 */
 
-void BeamLine::init(string dir, double &length, double &Q_hor, double &Q_ver, double beta){
-  read_madx_twiss(dir + "twiss_inj.txt", length, Q_hor, Q_ver, beta);
+void BeamLine::init(string dir, double &length, double &Q_hor, double &Q_ver, double beta, int chroma){
+  read_madx_twiss(dir + "twiss_inj.txt", length, Q_hor, Q_ver, beta, chroma);
   read_madx_sectormap(dir + "sectormap_inj.txt");
   element = line.begin(); 		
 }
@@ -125,13 +127,14 @@ void BeamLine::init(string dir, double &length, double &Q_hor, double &Q_ver, do
 */
 
 void BeamLine::read_madx_twiss(string fname, double &circum, double &Q_hor, double &Q_ver,
-			       double beta){
+			       double beta, int chroma){
   int index;
   string str;
   SectorMap SMap;
   double s, l;
   TwissP tw;
   list<string> pars;
+  double ax0, ay0, bx0, by0, l0, mux0, muy0, tmp1;
 
   ifstream twissfile(fname.c_str());
   if(twissfile.fail()){
@@ -196,20 +199,29 @@ void BeamLine::read_madx_twiss(string fname, double &circum, double &Q_hor, doub
   getline(twissfile, str);  // skip first line with numbers: repeated at end of file
   do{
     twissfile>>SMap.get_name()>>str;  // read strings in first 2 columns
-    // first two columns have to be name and keyword, if not reading fails
+    // first two columns have to be name and keyword, otherwise reading fails
     for(int i=0; i<numPars; ++i)  // read parameters
       twissfile>>*target[i];
     SMap.get_L() = l;
     // postprocess input
     tw.Dx *= beta;  // MAD's DX -> D_x
-    if(target[9] == &tw.xix)
-      tw.xix /= tw.mux;  // dmux -> xix
-    else
-      tw.xix = 0;
-    if(target[10] == &tw.xiy)
-      tw.xiy /= tw.muy;  // dmuy -> xiy
-    else
-      tw.xiy = 0;
+    tw.mux *= 2*PI;  // tune to phase
+    tw.muy *= 2*PI;  // tune to phase
+    if(chroma && str == "\"QUADRUPOLE\""){  // if chromaticity is on and beam line element is quadrupole set constants for chromaticity kicks
+      // for explanation of chromaticity kicks see notes p. 148
+      tmp1 = sqrt(tw.betx/bx0)*(cos(tw.mux-mux0)+ax0*sin(tw.mux-mux0));
+      if(tmp1 < 1.)
+	tw.xix = pow(acos(tmp1), 2)/l/beta;  // k_quad*l_quad; x focusing
+      else
+	tw.xix = -pow(acosh(tmp1), 2)/l/beta;  // k_quad*l_quad; x defocusing
+      tw.xiy = -tw.xix;  // opposite behaviour in y
+    }else{  // no chromaticity or not in quadrupole -> no kick
+      tw.xix = 0.;
+      tw.xiy = 0.;
+    }
+    ax0 = tw.alpx;  // keep parameters for (possible) chromaticity kick
+    bx0 = tw.betx;
+    mux0 = tw.mux;
     SMap.get_twiss() = tw;
     line.push_back(SMap);
   }while( SMap.get_name().find("$END") == -1 );
@@ -217,7 +229,6 @@ void BeamLine::read_madx_twiss(string fname, double &circum, double &Q_hor, doub
     cout<<"Error reading twiss file.\n";
     MPI_Abort(MPI_COMM_WORLD, 0);
   }
-
   twissfile.close();
   delete[] target;
 }
@@ -247,18 +258,14 @@ void BeamLine::read_madx_sectormap(string fname){
 
   for(u = 0; u < line.size(); ++u){
     mapfile >> sdummy >> ddummy;
-
     for(j = 0; j < 6; ++j)
       mapfile >> pos->get_K(j);
-
     for(l = 0; l < 6; ++l)
       for(j = 0; j < 6; ++j)
 	mapfile >> pos->get_T(j, l);
-
     for(l = 0; l < 36; ++l)
       for(j = 0; j < 6 ; ++j)
 	mapfile >> ddummy;
-
     ++pos;
   }
 

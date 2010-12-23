@@ -205,10 +205,10 @@ advancey(0:num_p-1)=ppic(12,0:num_p-1)
 ; plot offset:
 
 IF (offset eq 1) then begin
-  maxoffset=100.*max(offsetx(0:num_p-1))
+  maxoffset=100.*max(offsetx(0:num_p-1))*3
   baretune=Ncell*97.3/360.0
   plot, s/(beta0*clight)*1.0e3, 100.*offsetx(0:num_p-1),/xstyle,/ystyle,xtitle="t [ms]", $
-        ytitle="offset [cm]"
+        ytitle="offset [cm]", yrange=[-maxoffset,maxoffset]
   oplot, s/(beta0*clight)*1.0e3, 100.*offsety(0:num_p-1), color=150
 ;oplot,s/(beta0*clight)*1.0e3,0.0002*exp(s/(beta0*clight)*1.0e3/0.0625),color=50,line=2
 ;plot,s/C,180.0/!PI*2.0*acos((0.5*abs(cos(2.0*!PI*1.0*btftune*s/C)+offsetx(0:num_p-1)/maxoffset))),/xstyle,/ystyle,xtitle="turns",ytitle="offset in x",yrange=[0,180]

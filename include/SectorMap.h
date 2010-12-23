@@ -51,19 +51,9 @@ class SectorMap{
   //! calculate phase advances per element
   void phase_advance(double& sigx, double& sigy);
   //! transport particle coordinates through the sector
-  void transport(vektor& R1, vektor& R0);
+  void transport(vektor& R1, vektor& R0, double K_xix, double K_xiy);
 
   // the following functions have been added by SP
-  /*
-  double& ref_mux(){ return twiss.mux; }
-  double& ref_muy(){ return twiss.muy; }
-  double& ref_xix(){ return twiss.xix; }
-  double& ref_xiy(){ return twiss.xiy; }
-  */
-  void set_mux(double mux){ twiss.mux=mux; }
-  void set_muy(double muy){ twiss.muy=muy; }
-  void set_xix(double xix){ twiss.xix=xix; }
-  void set_xiy(double xiy){ twiss.xiy=xiy; }
   double get_mux() const { return twiss.mux; }
   double get_muy() const { return twiss.muy; }
   double get_xix() const { return twiss.xix; }
@@ -86,8 +76,8 @@ class BeamLine{
   ~BeamLine(){}
 
   void init(BeamLine& B){ line = B.line; element = B.element; }
-  void init(string dir, double &circum, double &Q_hor, double &Q_ver, double beta);
-  void read_madx_twiss(string fname, double &circum, double &Q_hor, double &Q_ver, double beta);  //!< read madx twiss file
+  void init(string dir, double &circum, double &Q_hor, double &Q_ver, double beta, int chroma);
+  void read_madx_twiss(string fname, double &circum, double &Q_hor, double &Q_ver, double beta, int chroma);  //!< read madx twiss file
   void read_madx_sectormap(string fname);  //!< read madx sectormap file
   int get_size(){ return line.size(); }
   double get_L();

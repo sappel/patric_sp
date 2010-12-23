@@ -44,7 +44,7 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
   while(el != ending){
     if(el->get_name() == "\"S01MB3\""){
       kickers[0] = &*el;
-      psi[0] = el->get_mux()*2*PI;
+      psi[0] = el->get_mux();
       beta[0] = el->get_betx();
       break;
     }
@@ -53,7 +53,7 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
   while(el != ending){
     if(el->get_name() == "\"S03MB4\""){
       kickers[1] = &*el;
-      psi[1] = el->get_mux()*2*PI;
+      psi[1] = el->get_mux();
       beta[1] = el->get_betx();
       break;
     }
@@ -62,7 +62,7 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
   while(el != ending){
     if(el->get_name() == "\"S11MB1\""){
       kickers[2] = &*el;
-      psi[2] = (el->get_mux()-Q_x)*2*PI;
+      psi[2] = (el->get_mux()-Q_x*2.*PI);
       beta[2] = el->get_betx();
       break;
     }
@@ -71,7 +71,7 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
   while(el != ending){
     if(el->get_name() == "\"S12MB2\""){
       kickers[3] = &*el;
-      psi[3] = (el->get_mux()-Q_x)*2*PI;
+      psi[3] = (el->get_mux()-Q_x*2*PI);
       beta[3] = el->get_betx();
       break;
     }
@@ -138,12 +138,11 @@ Bump::Bump(BeamLine* bl, double emit_x, double rmsToFull, double dp0, double Q_x
 
 
 void Bump::decrement(){
-  // works only as long as beam line in Main is not moved
+  // works only as long as the addresses of the elements pointed to by kickers[] remain valid
   if(kickers[0]->get_K(1) != 0.)
-    if(kickers[0]->get_K(1) > decr[0])
-      for(short i=0; i<4; ++i)
+    for(short i=0; i<4; ++i)
+      if(kickers[i]->get_K(1) > decr[0])
 	kickers[i]->get_K(1) -= decr[i];
-    else
-      for(short i=0; i<4; ++i)
+      else
 	kickers[i]->get_K(1) = 0.;
 }
